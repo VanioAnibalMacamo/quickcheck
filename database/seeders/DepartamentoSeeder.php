@@ -19,7 +19,7 @@ class DepartamentoSeeder extends Seeder
     {
        // protected $fillable = ['nome','descricao','sigla'];
         $departamentos = [
-            [
+           /* [
                 'id' => '1',
                 'nome' => 'Departamento da redução e  Manutenção da Eestrutura',
                 'descricao' => 'Responsável por tomar todas as medidas práticas...',
@@ -36,6 +36,13 @@ class DepartamentoSeeder extends Seeder
                 'nome' => 'Departamento de Recursos Humanos',
                 'descricao' => 'Responsável por tomar todas as medidas práticas...',
                 'sigla' => 'DRH'
+            ],*/
+
+            [
+            'id' => '4',
+            'nome' => 'Departamento de Reparacao',
+            'descricao' => 'Responsável pela repacao dos equipamentos danificados...',
+            'sigla' => 'DR'
             ]
         ];
 

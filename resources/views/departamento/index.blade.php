@@ -3,6 +3,12 @@
 @section('title', 'Departamento')
 
 @section('content_header')
+@if (session('mensagem'))
+          <div class="alert alert-success">{{ session('mensagem') }}</div>
+      @endif
+      @if (session('successDelete'))
+          <div class="alert alert-danger">{{ session('successDelete') }}</div>
+      @endif
     <h1>Departamentos</h1>
 @stop
 
@@ -10,7 +16,7 @@
     
 
 <div class="d-flex flex-row-reverse align-items-end mb-3">
-  <a href="{{ url('funcCreate') }}"  class="btn btn-primary">
+  <a href="{{ url('depCreate') }}"  class="btn btn-primary">
     <i class="fas fa-plus"></i> Adicionar
   </a>
 </div>
@@ -39,7 +45,7 @@
                       <td> 
                             <!-- Large modal -->
                             <button type="button" class="btn btn-primary btn-sm d-inline" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fas fa-eye"></i></button>
-                            <a class="btn btn-info btn-sm d-inline"> <i class="fas fa-pencil-alt"></i></a>
+                            <a class="btn btn-info btn-sm d-inline"  href="{{url('update_departamento',$departamento->id)}}"> <i class="fas fa-pencil-alt"></i></a>
                             <form id="form-excluir"  class="d-inline">
                                 @csrf
                                 @method('DELETE')
@@ -64,4 +70,9 @@
 
 @section('js')
     <script> console.log('Hi!'); </script>
+    <script>
+        setTimeout(function() {
+            document.querySelector('.alert').remove();
+        }, 5000);
+</script>
 @stop

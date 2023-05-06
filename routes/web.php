@@ -41,3 +41,7 @@ Route::delete('/funcionarios/{id}', 'App\Http\Controllers\FuncionarioController@
 
 
 Route::get('/depIndex', [App\Http\Controllers\DepartamentoController::class, 'index'])->name('depIndex');
+Route::get('/depCreate', [App\Http\Controllers\DepartamentoController::class, 'create'])->name('depCreate');
+Route::post('/saveDep',[App\Http\Controllers\DepartamentoController::class,'saveDep'])->middleware('web');
+Route::get('/update_departamento/{id}',[App\Http\Controllers\DepartamentoController::class,'update_view']);
+Route::post('/updateDep/{id}',[App\Http\Controllers\DepartamentoController::class,'update']);
