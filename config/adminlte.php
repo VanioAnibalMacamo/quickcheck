@@ -331,7 +331,7 @@ return [
         [
             'text' => 'Departamentos',
             'url'  => 'depIndex',
-            'icon' => 'fas fa-hard-hat',   
+            'icon' => 'fa-duotone fa-people-group',   
         ],
         [
             'text'    => 'Parametrização',
