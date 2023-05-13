@@ -326,12 +326,27 @@ return [
         [
             'text' => 'Funcionários',
             'url'  => 'funcIndex',
-            'icon' => 'fas fa-hard-hat',   
+            'icon' => 'fas fa-user-tie',   
         ],
         [
             'text' => 'Departamentos',
             'url'  => 'depIndex',
-            'icon' => 'fa-duotone fa-people-group',   
+            'icon' => 'fas fa-sitemap',   
+        ],
+        [
+            'text' => 'Áreas',
+            'url'  => '',
+            'icon' => 'fas fa-industry',   
+        ],
+        [
+            'text' => 'Máquinas',
+            'url'  => '',
+            'icon' => 'fas fa-wrench',   
+        ],
+        [
+            'text' => 'Actividades',
+            'url'  => '',
+            'icon' => 'fas fa-book-open',   
         ],
         [
             'text'    => 'Parametrização',
