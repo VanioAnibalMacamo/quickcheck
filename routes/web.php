@@ -47,3 +47,11 @@ Route::get('/update_departamento/{id}',[App\Http\Controllers\DepartamentoControl
 Route::post('/updateDep/{id}',[App\Http\Controllers\DepartamentoController::class,'update']);
 Route::get('/visualizar_departamento/{id}',[App\Http\Controllers\DepartamentoController::class,'visualizar_view']);
 Route::post('/visualizarDep/{id}',[App\Http\Controllers\DepartamentoController::class,'visualizar']);
+
+Route::get('/areaIndex', [App\Http\Controllers\AreaController::class, 'index'])->name('areaIndex');
+Route::get('/areaCreate', [App\Http\Controllers\AreaController::class, 'create'])->name('areaCreate');
+Route::post('/saveArea',[App\Http\Controllers\AreaController::class,'saveArea'])->middleware('web');
+Route::get('/update_area/{id}',[App\Http\Controllers\AreaController::class,'update_view']);
+Route::post('/updateArea/{id}',[App\Http\Controllers\AreaController::class,'update']);
+Route::get('/visualizar_area/{id}',[App\Http\Controllers\AreaController::class,'visualizar_view']);
+Route::delete('/area/{id}', 'App\Http\Controllers\AreaController@delete')->name('areas.delete');
