@@ -39,7 +39,6 @@ Route::post('/update/{id}',[App\Http\Controllers\FuncionarioController::class,'u
 //MVVM
 Route::delete('/funcionarios/{id}', 'App\Http\Controllers\FuncionarioController@delete')->name('funcionarios.delete');
 
-
 Route::get('/depIndex', [App\Http\Controllers\DepartamentoController::class, 'index'])->name('depIndex');
 Route::get('/depCreate', [App\Http\Controllers\DepartamentoController::class, 'create'])->name('depCreate');
 Route::post('/saveDep',[App\Http\Controllers\DepartamentoController::class,'saveDep'])->middleware('web');
@@ -55,3 +54,11 @@ Route::get('/update_area/{id}',[App\Http\Controllers\AreaController::class,'upda
 Route::post('/updateArea/{id}',[App\Http\Controllers\AreaController::class,'update']);
 Route::get('/visualizar_area/{id}',[App\Http\Controllers\AreaController::class,'visualizar_view']);
 Route::delete('/area/{id}', 'App\Http\Controllers\AreaController@delete')->name('areas.delete');
+
+Route::get('/maquinaIndex', [App\Http\Controllers\MaquinaController::class, 'index'])->name('maquinaIndex');
+Route::get('/maquinaCreate', [App\Http\Controllers\MaquinaController::class, 'create'])->name('maquinaCreate');
+Route::post('/saveMaquina',[App\Http\Controllers\MaquinaController::class,'saveMaquina'])->middleware('web');
+Route::get('/update_maquina/{id}',[App\Http\Controllers\MaquinaController::class,'update_view']);
+Route::post('/updateMaquina/{id}',[App\Http\Controllers\MaquinaController::class,'update']);
+Route::get('/visualizar_maquina/{id}',[App\Http\Controllers\MaquinaController::class,'visualizar_view']);
+Route::delete('/maquina/{id}', 'App\Http\Controllers\MaquinaController@delete')->name('maquina.delete');

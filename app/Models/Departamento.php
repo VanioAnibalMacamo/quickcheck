@@ -21,5 +21,10 @@ class Departamento extends Model
         return $this->hasMany(Area::class);
     }
 
+    public function maquinas()
+    {
+        return this->hasMany(Maquina::class);
+    }
+
    
 }
