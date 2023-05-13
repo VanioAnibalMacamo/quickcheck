@@ -49,4 +49,9 @@ class DepartamentoController extends Controller
 
         return redirect()->route('depIndex')->with('mensagem', 'Departamento Actualizado com sucesso!');  
     }
+
+    public function visualizar_view($id){
+        $departamento = Departamento :: find($id);
+        return view('/departamento/view', compact('departamento'));
+    }
 }

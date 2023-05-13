@@ -44,7 +44,7 @@
                       <td>{{ $departamento->sigla}}</td>
                       <td> 
                             <!-- Large modal -->
-                            <button type="button" class="btn btn-primary btn-sm d-inline" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fas fa-eye"></i></button>
+                            <a  class="btn btn-primary btn-sm d-inline" href="{{url('visualizar_departamento',$departamento->id)}}"><i class="fas fa-eye"></i></a>
                             <a class="btn btn-info btn-sm d-inline"  href="{{url('update_departamento',$departamento->id)}}"> <i class="fas fa-pencil-alt"></i></a>
                             <form id="form-excluir"  class="d-inline">
                                 @csrf
@@ -63,48 +63,7 @@
             </div>
 
 
-            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                   <div class="modal-content">
-
-
-                     <!-- general form elements -->
-    <div class="card card-primary">
-              <div class="card-header">
-                <h3 class="card-title">Dados do Departamento</h3>
-              </div>
-              <!-- /.card-header -->
-              <!-- form start -->
-              <form action="{{url('saveDep')}}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <div class="card-body">
-                <div class="form-group">
-                        <label for="inputAddress">Nome Completo</label>
-                        <input type="text" class="form-control" id="nome" name='nome' value="{{ $departamento->nome }}" placeholder="Digite o nome do Departamento..."readonly>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                        <label for="inputPassword4">Sigla</label>
-                        <input type="text" class="form-control" id="sigla" name='sigla' value="{{ $departamento->sigla }}" placeholder="ex: GRH"readonly>
-                        </div>
-                        <div class="form-group col-md-6">
-                        <label for="inputEmail4">Descricao</label>
-                        <input type="text" class="form-control" id="descricao" name='descricao' value="{{ $departamento->descricao }}"placeholder="ex: Estamos todos juntos"readonly>
-                        </div>
-                    </div>
-                  
-              </form>
-            </div>
-            <!-- /.card -->
-
-
-
-
-
-
-                    </div>
-                  </div>
-              </div>
+            
 
 @stop
 

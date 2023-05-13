@@ -45,3 +45,5 @@ Route::get('/depCreate', [App\Http\Controllers\DepartamentoController::class, 'c
 Route::post('/saveDep',[App\Http\Controllers\DepartamentoController::class,'saveDep'])->middleware('web');
 Route::get('/update_departamento/{id}',[App\Http\Controllers\DepartamentoController::class,'update_view']);
 Route::post('/updateDep/{id}',[App\Http\Controllers\DepartamentoController::class,'update']);
+Route::get('/visualizar_departamento/{id}',[App\Http\Controllers\DepartamentoController::class,'visualizar_view']);
+Route::post('/visualizarDep/{id}',[App\Http\Controllers\DepartamentoController::class,'visualizar']);
