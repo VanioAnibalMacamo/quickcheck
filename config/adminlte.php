@@ -335,18 +335,23 @@ return [
         ],
         [
             'text' => 'Áreas',
-            'url'  => '',
+            'url'  => 'areaIndex',
             'icon' => 'fas fa-industry',   
         ],
         [
             'text' => 'Máquinas',
-            'url'  => '',
+            'url'  => 'maquinaIndex',
             'icon' => 'fas fa-wrench',   
         ],
         [
             'text' => 'Actividades',
-            'url'  => '',
+            'url'  => 'actividadeIndex',
             'icon' => 'fas fa-book-open',   
+        ],
+        [
+            'text' => 'Perguntas',
+            'url'  => 'perguntaIndex',
+            'icon' => ' fas fa-question-circle',   
         ],
         [
             'text'    => 'Parametrização',
