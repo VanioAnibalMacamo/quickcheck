@@ -23,7 +23,7 @@ class Departamento extends Model
 
     public function maquinas()
     {
-        return this->hasMany(Maquina::class);
+        return $this->hasMany(Maquina::class);
     }
 
    

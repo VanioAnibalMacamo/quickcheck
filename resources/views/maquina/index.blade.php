@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Áreas')
+@section('title', 'Máquinas')
 
 @section('content_header')
 @if (session('mensagem'))
@@ -9,7 +9,7 @@
       @if (session('successDelete'))
           <div class="alert alert-danger">{{ session('successDelete') }}</div>
       @endif
-<h1>Áreas</h1>
+<h1>Máquinas</h1>
       
 @stop
 
@@ -40,7 +40,11 @@
                       <td>{{ $maquina->nome}}</td>
                       <td>{{ $maquina->numero}}</td>
                       <td>{{ $maquina->dataRegisto}}</td>
-                      <td>{{ $$maquina->departamento->sigla}}</td>
+                      @foreach($departamentos as $departamento)
+                        @if($maquina->departamento_id == $departamento->id)
+                        <td>{{ $departamento->sigla}}</td>
+                        @endif
+                      @endforeach
                       <td> 
                            
                             <a  class="btn btn-primary btn-sm d-inline" href="{{url('visualizar_maquina',$maquina->id)}}"><i class="fas fa-eye"></i></a>
@@ -48,7 +52,7 @@
                             <form id="form-excluir" action="{{ route('maquina.delete', ['id' => $maquina->id]) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja excluir a Máquina?{{ $area->nome }}?')"><i class="fas fa-trash"> </i></button>
+                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja excluir a Máquina?{{ $maquina->nome }}?')"><i class="fas fa-trash"> </i></button>
                             </form>
                       </td>
                      

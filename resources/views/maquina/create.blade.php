@@ -13,15 +13,7 @@
               <div class="card-header">
                 <h3 class="card-title">Dados da Máquina</h3>
               </div>
-              <!-- /.card-header 
-            <th style="width: 10px">#</th>
-                      <th>Nome</th>
-                      <th>Número Máquina</th>
-                      <th>Data Registo</th>
-                      <th>departamento</th>
-            
-            -->
-              <!-- form start -->
+        
               <form action="{{url('saveMaquina')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
@@ -47,14 +39,14 @@
                     </div>
                    <!-- Date and time -->
                 <div class="form-group">
-                  <label>Data de Registo:</label> </br>
-                  <input type="date" name="datarEGISTO" min="1900-01-01" max="2023-12-31" value="2000-01-01">
+                  <label>Data de Registo:</label><br/>
+                  <input type="datetime-local" name="dataRegistro">
                 </div>
                    
                    
                     <div class="card-footer">
                         <input type="submit" class="btn btn-primary" value='Salvar'>
-                        <a  href="{{ url('/areaIndex') }}" type="button" class="btn btn-warning">Cancelar</a>
+                        <a  href="{{ url('/maquinaIndex') }}" type="button" class="btn btn-warning">Cancelar</a>
                     </div>
               </form>
             </div>
@@ -68,5 +60,20 @@
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
+    <script> 
+    // Obter a data e hora atual
+    var now = new Date();
+
+    // Formatar a data e hora no formato suportado pelo elemento "datetime-local"
+    var dateString = now.getFullYear() + '-' + ('0' + (now.getMonth() + 1)).slice(-2) + '-' + ('0' + now.getDate()).slice(-2);
+    var timeString = ('0' + now.getHours()).slice(-2) + ':' + ('0' + now.getMinutes()).slice(-2);
+    var dateTimeString = dateString + 'T' + timeString;
+
+    // Definir o valor máximo do elemento "datetime-local"
+    document.getElementsByName("dataRegistro")[0].setAttribute('max', dateTimeString);
+
+   
+    </script>
+
+    
 @stop
