@@ -144,14 +144,4 @@ class FuncionarioController extends Controller
         return redirect()->route('funcIndex')->with('successDelete', 'Funcionario excluído com sucesso!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

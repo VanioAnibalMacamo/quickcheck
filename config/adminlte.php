@@ -385,8 +385,9 @@ return [
                     ],
                 ],
                 [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'text' => 'Tipo de Actividades',
+                    'url'  => 'tipoActividadeIndex',
+                    'icon' => 'fas fa-book-open', 
                 ],
             ],
         ],

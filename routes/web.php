@@ -62,3 +62,14 @@ Route::get('/update_maquina/{id}',[App\Http\Controllers\MaquinaController::class
 Route::post('/updateMaquina/{id}',[App\Http\Controllers\MaquinaController::class,'update']);
 Route::get('/visualizar_maquina/{id}',[App\Http\Controllers\MaquinaController::class,'visualizar_view']);
 Route::delete('/maquina/{id}', 'App\Http\Controllers\MaquinaController@delete')->name('maquina.delete');
+
+Route::get('/tipoActividadeIndex', [App\Http\Controllers\TipoActividadeController::class, 'index'])->name('tipoActividadeIndex');
+Route::get('/tipoActividadeCreate', [App\Http\Controllers\TipoActividadeController::class, 'create'])->name('maquinaCreate');
+Route::post('/saveTipoActividade',[App\Http\Controllers\TipoActividadeController::class,'saveTipoActividade'])->middleware('web');
+Route::get('/update_tipoActividade/{id}',[App\Http\Controllers\TipoActividadeController::class,'update_view']);
+Route::post('/updateTipoActividade/{id}',[App\Http\Controllers\TipoActividadeController::class,'update']);
+Route::get('/visualizar_tipoActividade/{id}',[App\Http\Controllers\TipoActividadeController::class,'visualizar_view']);
+Route::delete('/tipoActividade/{id}', 'App\Http\Controllers\TipoActividadeController@delete')->name('tipoActividade.delete');
+
+
+
