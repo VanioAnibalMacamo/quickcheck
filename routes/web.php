@@ -77,7 +77,7 @@ Route::post('/saveActividade',[App\Http\Controllers\ActividadeController::class,
 Route::get('/update_actividade/{id}',[App\Http\Controllers\ActividadeController::class,'update_view']);
 Route::post('/updateActividade/{id}',[App\Http\Controllers\ActividadeController::class,'update']);
 Route::get('/visualizar_actividade/{id}',[App\Http\Controllers\ActividadeController::class,'visualizar_view']);
-Route::delete('/actividade/{id}', 'App\Http\Controllers\ActividadeController@delete')->name('actividade.delete');
+Route::delete('/actividade/{id}', 'App\Http\Controllers\ActividadeController@delete')->name('actividades.delete');
 
 Route::get('/perguntaIndex', [App\Http\Controllers\PerguntaController::class, 'index'])->name('perguntaIndex');
 Route::get('/perguntaCreate', [App\Http\Controllers\PerguntaController::class, 'create'])->name('perguntaCreate');

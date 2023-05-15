@@ -8,7 +8,7 @@ class Actividade extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['numero_actividade','dataInicio', 'dataFim'];
+    protected $fillable = ['nome','descricao'];
 
     public function funcionarios()
     {

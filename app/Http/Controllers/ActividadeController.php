@@ -2,9 +2,61 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Actividade;
 use Illuminate\Http\Request;
 
 class ActividadeController extends Controller
 {
-    //
+    
+    public function index()
+    {
+        $actividades = Actividade::paginate(8);
+        return view('actividade.index',['actividades' => $actividades]);
+    }
+    public function create()
+    {
+        return view('actividade.create');
+    }
+
+    public function saveActividade(Request $request){
+        $actividade = new Actividade();
+        
+        $actividade->descricao  =$request->descricao;
+        $actividade->nome  =$request->nome;
+        $actividade->tipo_actividade_id=$request->tipoActividade;
+        $actividade->area_id=$request->area;
+
+        $actividade->save();
+        return redirect()->route('actividadeIndex')->with('mensagem', 'Actividade Cadastrada com sucesso!');
+    }
+
+    public function update_view($id){
+        $pergunta = Pergunta :: find($id);
+        return view('/actividade/edit', compact('pergunta'));
+    }
+
+    public function update(Request $request, $id){
+       
+        $actividade = Actividade :: find($id);
+        $actividade->descricao  =$request->descricao;
+        $actividade->nome  =$request->nome;
+        $actividade->tipoActividade_id=$request->tipoActividade;
+        $actividade->area_id=$request->area;
+
+        $actividade->save();
+        return redirect()->route('actividadeIndex')->with('mensagem', 'Actividade Actualizada com sucesso!'); 
+    }
+
+    public function visualizar_view($id){
+        $actividade = Actividade :: find($id);
+        return view('/actividade/view', compact('actividade'));
+    }
+
+    public function delete($id)
+    {
+        $actividade = Actividade :: find($id);
+        $actividade->delete();
+       
+        return redirect()->route('actividadeIndex')->with('successDelete', 'Actividade excluída com sucesso!');
+    }
 }
