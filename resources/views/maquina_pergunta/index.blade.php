@@ -26,9 +26,9 @@
                   <thead>
                     <tr>
                       <th style="width: 10px">#</th>
-                      <th>Máquina</th>
-                      <th>Pergunta</th>
-                      <th></th>
+                      <th style="width: 45%">Máquina</th>
+                      <th style="width: 45%">Pergunta</th>
+                      <th style="width: 20%"></th>
                     </tr>
                   </thead>
                   <tbody>

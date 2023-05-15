@@ -46,34 +46,20 @@
                 <table class="table table-striped">
                   <thead>
                     <tr>
-                      <th style="width: 10px">#</th>
-                      <th>Máquina</th>
+                      <th style="width: 40%">Máquina</th>
                       <th>Perguntas</th>
-                      <th></th>
                     </tr>
                   </thead>
                   <tbody>
                     
                     <tr>
-                      <td>1</td>
                       <td>{{ $maquina->nome }}</td>
                         <td>
                             @foreach ($maquina->perguntas as $pergunta)
                                 {{ $pergunta->descricao }}<br>
                             @endforeach
                         </td>
-                      <td> 
-                           
-                            <a  class="btn btn-primary btn-sm d-inline" href="{{url('visualizar_maquinaPergunta',$maquina->id)}}"><i class="fas fa-eye"></i></a>
-                            <a class="btn btn-info btn-sm d-inline"  href="{{url('update_maquinaPergunta',$maquina->id)}}"> <i class="fas fa-pencil-alt"></i></a>
-                            <form id="form-excluir" action="{{ route('maquina_perguntas.delete', ['id' => $maquina->id]) }}" method="POST" class="d-inline">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja excluir a Área {{ $maquina->nome }}?')"><i class="fas fa-trash"> </i></button>
-                            </form>
-                      </td>
-                     
-                    
+                                        
                     </tr>
                   
                   </tbody>
