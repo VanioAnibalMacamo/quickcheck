@@ -20,7 +20,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="inputAddress">Descrição (Pergunta)</label>
-                        <input type="text" class="form-control" id="nome" name='descricao' value="{{ $pergunta->descricao }}" placeholder="Digite a pergunta...">
+                        <input type="text" class="form-control" id="nome" name='descricao' placeholder="Digite a pergunta...">
                     </div>               
                    
                     <div class="card-footer">

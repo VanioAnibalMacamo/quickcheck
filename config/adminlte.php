@@ -354,6 +354,26 @@ return [
             'icon' => ' fas fa-question-circle',   
         ],
         [
+            'text'    => 'Check List',
+            'icon'    => 'fas fa-list',
+           
+            'submenu' => [
+                [
+                    'text'    => 'Registar Actividades',
+                    'url'     => '#',
+                    //'icon' => 'fas fa-id-card',
+                    
+                ],
+                [
+                    'text'    => 'Alocação de Perguntas',
+                    'url'     => 'maquina_perguntaIndex',
+                    //'icon' => 'fas fa-id-card',
+                    
+                ],
+            ],
+           
+        ],
+        [
             'text'    => 'Parametrização',
             'icon'    => 'fas fa-cog',
            

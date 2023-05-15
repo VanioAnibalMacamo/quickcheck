@@ -87,5 +87,13 @@ Route::post('/updatePergunta/{id}',[App\Http\Controllers\PerguntaController::cla
 Route::get('/visualizar_pergunta/{id}',[App\Http\Controllers\PerguntaController::class,'visualizar_view']);
 Route::delete('/pergunta/{id}', 'App\Http\Controllers\PerguntaController@delete')->name('perguntas.delete');
 
+Route::get('/maquina_perguntaIndex', [App\Http\Controllers\MaquinaPerguntaController::class, 'index'])->name('maquina_perguntaIndex');
+Route::get('/maquina_perguntaCreate', [App\Http\Controllers\MaquinaPerguntaController::class, 'create'])->name('maquina_perguntaCreate');
+Route::post('/saveMaquinaPergunta',[App\Http\Controllers\MaquinaPerguntaController::class,'savePergunta'])->middleware('web');
+Route::get('/update_maquinaPergunta/{id}',[App\Http\Controllers\MaquinaPerguntaController::class,'update_view']);
+Route::post('/updateMaquinaPergunta/{id}',[App\Http\Controllers\MaquinaPerguntaController::class,'update']);
+Route::get('/visualizar_maquinaPergunta/{id}',[App\Http\Controllers\MaquinaPerguntaController::class,'visualizar_view']);
+Route::delete('/maquinaPergunta/{id}', 'App\Http\Controllers\PerguntaController@delete')->name('maquina_perguntas.delete');
+
 
 
