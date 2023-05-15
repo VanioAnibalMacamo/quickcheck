@@ -24,5 +24,10 @@ class Actividade extends Model
     {
         return $this->belongsTo(Area::class);
     }
+
+    public function tipoActividade()
+    {
+        return $this->belongsTo(TipoActividade::class);
+    }
 }
 

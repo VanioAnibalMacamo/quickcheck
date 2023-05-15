@@ -20,4 +20,9 @@ class Maquina extends Model
     {
         return $this->belongsToMany(Actividade::class);
     }
+
+    public function perguntas()
+    {
+        return $this->belongsToMany(Pergunta::class);
+    }
 }

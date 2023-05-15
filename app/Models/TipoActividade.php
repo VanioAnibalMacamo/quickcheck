@@ -14,4 +14,9 @@ class TipoActividade extends Model
     protected $fillable = ['nome', 'descricao'];
 
     protected $guarded = ['id'];
+
+    public function actividades()
+    {
+        return $this->hasMany(Actividade::class);
+    }
 }
