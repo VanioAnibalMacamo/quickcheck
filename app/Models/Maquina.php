@@ -9,7 +9,7 @@ class Maquina extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nome', 'dataRegisto', 'numero'];
+    protected $fillable = ['nome', 'dataRegisto', 'numero','massa'];
 
     public function departamentos()
     {

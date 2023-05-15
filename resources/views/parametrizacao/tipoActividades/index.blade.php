@@ -44,10 +44,10 @@
                             <!-- Large modal -->
                             <a  class="btn btn-primary btn-sm d-inline" href="{{url('visualizar_tipoActividade',$tipoActividade->id)}}"><i class="fas fa-eye"></i></a>
                             <a class="btn btn-info btn-sm d-inline"  href="{{url('update_tipoActividade',$tipoActividade->id)}}"> <i class="fas fa-pencil-alt"></i></a>
-                            <form id="form-excluir" class="d-inline">
+                            <form id="form-excluir" action="{{ route('tipoActividades.delete', ['id' => $tipoActividade->id]) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja excluir o Tipo de Actividade? {{ $tipoActividade->nome }}?')"><i class="fas fa-trash"> </i></button>
+                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja excluir o Tipo de Actividade  {{ $tipoActividade->nome }}?')"><i class="fas fa-trash"> </i></button>
                             </form>
                       </td>
                      

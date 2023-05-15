@@ -1,22 +1,22 @@
 @extends('adminlte::page')
 
-@section('title', 'Departamento')
+@section('title', 'Dashboard')
 
 @section('content_header')
-      @if (session('mensagem'))
-          <div class="alert alert-success">{{ session('mensagem') }}</div>
-      @endif
-      @if (session('successDelete'))
-          <div class="alert alert-danger">{{ session('successDelete') }}</div>
-      @endif
-    <h1>Departamentos</h1>
+    @if (session('mensagem'))
+        <div class="alert alert-success">{{ session('mensagem') }}</div>
+    @endif
+    @if (session('successDelete'))
+        <div class="alert alert-danger">{{ session('successDelete') }}</div>
+    @endif
+    <h1>Perguntas</h1>
 @stop
 
 @section('content')
-    
+  
 
 <div class="d-flex flex-row-reverse align-items-end mb-3">
-  <a href="{{ url('depCreate') }}"  class="btn btn-primary">
+  <a href="{{ url('perguntaCreate') }}"  class="btn btn-primary">
     <i class="fas fa-plus"></i> Adicionar
   </a>
 </div>
@@ -30,26 +30,22 @@
                   <thead>
                     <tr>
                       <th style="width: 10px">#</th>
-                      <th>Nome</th>
                       <th>Descrição</th>
-                      <th>Sigla</th>
                     </tr>
                   </thead>
                   <tbody>
-                  @foreach ($departamentos as $departamento)
+                  @foreach ($perguntas as $pergunta)
                     <tr>
                       <td>{{ $loop->index + 1 }}</td>
-                      <td>{{ $departamento->nome}}</td>
-                      <td>{{ $departamento->descricao}}</td>
-                      <td>{{ $departamento->sigla}}</td>
+                      <td>{{ $pergunta->descricao}}</td>
                       <td> 
                             <!-- Large modal -->
-                            <a  class="btn btn-primary btn-sm d-inline" href="{{url('visualizar_departamento',$departamento->id)}}"><i class="fas fa-eye"></i></a>
-                            <a class="btn btn-info btn-sm d-inline"  href="{{url('update_departamento',$departamento->id)}}"> <i class="fas fa-pencil-alt"></i></a>
-                            <form id="form-excluir"  class="d-inline">
+                            <a  class="btn btn-primary btn-sm d-inline" href="{{url('visualizar_pergunta',$pergunta->id)}}"><i class="fas fa-eye"></i></a>
+                            <a class="btn btn-info btn-sm d-inline"  href="{{url('update_pergunta',$pergunta->id)}}"> <i class="fas fa-pencil-alt"></i></a>
+                            <form id="form-excluir" action="{{ route('perguntas.delete', ['id' => $pergunta->id]) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash"> </i></button>
+                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja excluir a Pergunta {{ $pergunta->descricao }}?')"><i class="fas fa-trash"> </i></button>
                             </form>
                       </td>
                      
@@ -58,7 +54,7 @@
                    @endforeach
                   </tbody>
                 </table>
-                {{ $departamentos->links('pagination::bootstrap-4') }}
+                {{ $perguntas->links('pagination::bootstrap-4') }}
               </div>
             </div>
 
