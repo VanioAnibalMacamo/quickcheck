@@ -93,7 +93,10 @@ Route::post('/saveMaquinaPergunta',[App\Http\Controllers\MaquinaPerguntaControll
 Route::get('/update_maquinaPergunta/{id}',[App\Http\Controllers\MaquinaPerguntaController::class,'update_view']);
 Route::post('/updateMaquinaPergunta/{id}',[App\Http\Controllers\MaquinaPerguntaController::class,'update']);
 Route::get('/visualizar_maquinaPergunta/{id}',[App\Http\Controllers\MaquinaPerguntaController::class,'visualizar_view']);
-Route::delete('/maquinaPergunta/{id}', 'App\Http\Controllers\PerguntaController@delete')->name('maquina_perguntas.delete');
+Route::delete('/maquinaPergunta/{id}', 'App\Http\Controllers\MaquinaPerguntaController@delete')->name('maquina_perguntas.delete');
+
+Route::post('/maquina/{maquina}/salvar-perguntas', 'App\Http\Controllers\MaquinaPerguntaController@salvarPerguntas')->name('maquina.salvar-perguntas');
+
 
 
 

@@ -14,11 +14,7 @@
 @stop
 
 @section('content')
-<div class="d-flex flex-row-reverse align-items-end mb-3">
-  <a href="{{ url('maquina_perguntaCreate') }}"  class="btn btn-primary">
-    <i class="fas fa-plus"></i> Adicionar
-  </a>
-</div>
+
         <div class="card">
               <!-- /.card-header -->
               <div class="card-body p-0">
@@ -26,9 +22,9 @@
                   <thead>
                     <tr>
                       <th style="width: 10px">#</th>
-                      <th style="width: 45%">Máquina</th>
-                      <th style="width: 45%">Pergunta</th>
-                      <th style="width: 20%"></th>
+                      <th style="width: 20%">Máquina</th>
+                      <th style="width: 65%">Perguntas</th>
+                      <th style="width: 10%"></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -36,20 +32,25 @@
                     <tr>
                       <td>{{ $loop->index + 1 }}</td>
                       <td>{{ $maquina->nome }}</td>
-                        <td>
-                            @foreach ($maquina->perguntas as $pergunta)
-                                {{ $pergunta->descricao }}<br>
-                            @endforeach
-                        </td>
+                      <td>
+                          @foreach ($maquina->perguntas as $pergunta)
+                            <span class="badge bg-primary">
+                                  {{ $pergunta->descricao }}<br>
+                          </span>
+                          @endforeach
+                      </td>        
                       <td> 
-                           
-                            <a  class="btn btn-primary btn-sm d-inline" href="{{url('visualizar_maquinaPergunta',$maquina->id)}}"><i class="fas fa-eye"></i></a>
-                            <a class="btn btn-info btn-sm d-inline"  href="{{url('update_maquinaPergunta',$maquina->id)}}"> <i class="fas fa-pencil-alt"></i></a>
-                            <form id="form-excluir" action="{{ route('maquina_perguntas.delete', ['id' => $maquina->id]) }}" method="POST" class="d-inline">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja excluir a Área {{ $maquina->nome }}?')"><i class="fas fa-trash"> </i></button>
-                            </form>
+                           <!--
+                               <a  class="btn btn-primary btn-sm d-inline" href="{{url('visualizar_maquinaPergunta',$maquina->id)}}"><i class="fas fa-eye"></i></a>
+                            -->
+                            <a class="btn btn-info btn-sm d-inline"  href="{{url('update_maquinaPergunta',$maquina->id)}}"> <i class="fas fa-pencil-alt">Alocar</i></a>
+                            <!--
+                              <form id="form-excluir" action="{{ route('maquina_perguntas.delete', ['id' => $maquina->id]) }}" method="POST" class="d-inline">
+                                  @csrf
+                                  @method('DELETE')
+                                  <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja excluir a Área {{ $maquina->nome }}?')"><i class="fas fa-trash"> </i></button>
+                              </form>
+                            -->
                       </td>
                      
                     

@@ -31,4 +31,14 @@ class MaquinaPerguntaController extends Controller
         $perguntas = Pergunta::all();
         return view('/maquina_pergunta/edit', compact('maquina','perguntas'));
     }
+
+    public function salvarPerguntas(Request $request, Maquina $maquina)
+    {
+        $perguntasSelecionadas = $request->input('pergunta_ids', []);
+
+        $maquina->perguntas()->sync($perguntasSelecionadas);
+
+        return redirect()->back()->with('success', 'Perguntas salvas com sucesso!');
+    }
+
 }
