@@ -34,6 +34,7 @@ class MaquinaController extends Controller
         $maquina->numero = $request->numero;
         $maquina->departamento_id = $request->departamento;
         $maquina->dataRegisto = $request->input('dataRegistro');
+        $maquina->massa = $request->massa;
 
         $maquina->save();
         return redirect()->route('maquinaIndex')->with('mensagem', 'Máquina Cadastrada com sucesso!');
@@ -68,4 +69,5 @@ class MaquinaController extends Controller
        
         return redirect()->route('maquinaIndex')->with('successDelete', 'Máquina excluída com sucesso!');
     }
+    
 }

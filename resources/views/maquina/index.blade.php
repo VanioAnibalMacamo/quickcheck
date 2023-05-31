@@ -28,6 +28,7 @@
                       <th style="width: 10px">#</th>
                       <th>Nome</th>
                       <th>Número Máquina</th>
+                      <th>Massa Máquina</th>
                       <th>Data Registo</th>
                       <th>departamento</th>
                       <th></th>
@@ -39,6 +40,7 @@
                       <td>{{ $loop->index + 1 }}</td>
                       <td>{{ $maquina->nome}}</td>
                       <td>{{ $maquina->numero}}</td>
+                      <td>{{ $maquina->massa}} Tonelada(s)</td>
                       <td>{{ $maquina->dataRegisto}}</td>
                       @foreach($departamentos as $departamento)
                         @if($maquina->departamento_id == $departamento->id)

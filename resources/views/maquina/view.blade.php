@@ -37,11 +37,21 @@
                         </select>
                         </div>
                     </div>
-                   <!-- Date and time -->
-                <div class="form-group">
-                  <label>Data de Registo:</label><br/>
-                  <input type="datetime-local" name="dataRegistro" value="{{ \Carbon\Carbon::parse($maquina->dataRegisto)->format('Y-m-d\TH:i:s') }}" readonly>
-                </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                        <label for="inputEmail4">Massa da Máquina (Toneladas) </label>
+                        <input type="text" class="form-control" id="massa" name="massa" value="{{ $maquina->massa}}" placeholder="Digite a massa da Máquina" readOnly>
+
+                        </div>
+                        <div class="form-group col-md-6">
+                                                  <!-- Date and time -->
+                        <div class="form-group">
+                            <label>Data de Registo:</label><br/>
+                            <input type="datetime-local" name="dataRegistro" value="{{ \Carbon\Carbon::parse($maquina->dataRegisto)->format('Y-m-d\TH:i:s') }}" readOnly>
+                        </div>       
+                        </div>
+                    </div>
+                
                    
                    
                     <div class="card-footer">

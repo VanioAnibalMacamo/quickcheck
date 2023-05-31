@@ -37,13 +37,22 @@
                         </select>
                         </div>
                     </div>
-                   <!-- Date and time -->
-                <div class="form-group">
-                  <label>Data de Registo:</label><br/>
-                  <input type="datetime-local" name="dataRegistro">
-                </div>
-                   
-                   
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                        <label for="inputEmail4">Massa da Máquina (Toneladas) </label>
+                        <input type="text" class="form-control" id="massa" name="massa" placeholder="Digite a massa da Máquina" required>
+
+                        </div>
+                        <div class="form-group col-md-6">
+                           <!-- Date and time -->
+                            <div class="form-group">
+                            <label>Data de Registo:</label><br/>
+                            <input type="datetime-local" name="dataRegistro">
+                            </div>
+                                    
+                        </div>
+                    </div>
+                
                     <div class="card-footer">
                         <input type="submit" class="btn btn-primary" value='Salvar'>
                         <a  href="{{ url('/maquinaIndex') }}" type="button" class="btn btn-warning">Cancelar</a>
@@ -74,6 +83,15 @@
 
    
     </script>
+
+<script>
+    document.getElementById('massa').addEventListener('input', function(e) {
+        var inputValue = e.target.value;
+        var numericValue = inputValue.replace(/[^0-9.]/g, ''); // Remove todos os caracteres que não são números ou vírgula
+        e.target.value = numericValue;
+    });
+</script>
+
 
     
 @stop
