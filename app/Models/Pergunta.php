@@ -16,4 +16,10 @@ class Pergunta extends Model
         return $this->belongsToMany(Maquina::class);
     }
 
+    public function tipoAtividades()
+    {
+        return $this->belongsToMany(TipoActividade::class, 'tipo_actividade_pergunta');
+    }
+
+
 }

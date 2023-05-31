@@ -19,4 +19,9 @@ class TipoActividade extends Model
     {
         return $this->hasMany(Actividade::class);
     }
+    public function perguntas()
+    {
+        return $this->belongsToMany(Pergunta::class, 'tipo_atividade_pergunta');
+    }
+
 }
