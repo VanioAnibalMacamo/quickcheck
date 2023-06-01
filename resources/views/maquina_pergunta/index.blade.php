@@ -22,8 +22,9 @@
                   <thead>
                     <tr>
                       <th style="width: 10px">#</th>
-                      <th style="width: 20%">Máquina</th>
-                      <th style="width: 65%">Perguntas</th>
+                      <th style="width: 15%">Máquina</th>
+                      <th style="width: 60%">Perguntas</th>
+                      <th style="width: 10%">N° Perguntas</th>
                       <th style="width: 10%"></th>
                     </tr>
                   </thead>
@@ -38,7 +39,8 @@
                                   {{ $pergunta->descricao }}<br>
                           </span>
                           @endforeach
-                      </td>        
+                      </td> 
+                      <td>{{$maquina->perguntas->count()}}</td>         
                       <td> 
                            <!--
                                <a  class="btn btn-primary btn-sm d-inline" href="{{url('visualizar_maquinaPergunta',$maquina->id)}}"><i class="fas fa-eye"></i></a>

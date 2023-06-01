@@ -14,7 +14,7 @@ class MaquinaPerguntaController extends Controller
     }
     public function create()
     {   $maquinas = Maquina::all();
-        $perguntas = Pergunta::all();
+        $perguntas = Pergunta::where('finalidade', 'maquina')->get();
         return view('maquina_pergunta.create', compact('maquinas', 'perguntas'));
     }
 
@@ -28,7 +28,7 @@ class MaquinaPerguntaController extends Controller
 
     public function update_view($id){
         $maquina = Maquina::find($id);
-        $perguntas = Pergunta::all();
+        $perguntas = Pergunta::where('finalidade', 'maquina')->get();
         return view('/maquina_pergunta/edit', compact('maquina','perguntas'));
     }
 

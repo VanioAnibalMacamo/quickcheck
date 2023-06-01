@@ -12,30 +12,30 @@
     <div class="card-header">
          <h3 class="card-title">Perguntas</h3>
     </div>
-  <form action="{{ route('maquina.salvar-perguntas', $maquina) }}" method="post" class="pl-5">
-      @csrf
-      <div class="row">
+    <form action="{{ route('maquina.salvar-perguntas', $maquina) }}" method="post" class="pl-5">
+        @csrf
+        <div class="row">
           <div class="col-md-4">
-              @foreach ($perguntas->chunk(ceil($perguntas->count() / 2))->first() as $pergunta)
-                  <div class="checkbox mb-2">
-                      <label class="d-flex align-items-center">
-                          <input type="checkbox" name="pergunta_ids[]" value="{{ $pergunta->id }}" class="mr-3">
-                          {{ $pergunta->descricao }}
-                      </label>
-                  </div>
-              @endforeach
+            @foreach ($perguntas->chunk(ceil($perguntas->count() / 2))->first() as $pergunta)
+              <div class="checkbox mb-2">
+                <label class="d-flex align-items-center">
+                  <input type="checkbox" name="pergunta_ids[]" value="{{ $pergunta->id }}" class="mr-3" @if($maquina->perguntas->contains('id', $pergunta->id)) checked @endif>
+                  {{ $pergunta->descricao }}
+                </label>
+              </div>
+            @endforeach
           </div>
           <div class="col-md-4">
-              @foreach ($perguntas->chunk(ceil($perguntas->count() / 2))->last() as $pergunta)
-                  <div class="checkbox mb-2">
-                      <label class="d-flex align-items-center">
-                          <input type="checkbox" name="pergunta_ids[]" value="{{ $pergunta->id }}" class="mr-3">
-                          {{ $pergunta->descricao }}
-                      </label>
-                  </div>
-              @endforeach
+            @foreach ($perguntas->chunk(ceil($perguntas->count() / 2))->last() as $pergunta)
+              <div class="checkbox mb-2">
+                <label class="d-flex align-items-center">
+                  <input type="checkbox" name="pergunta_ids[]" value="{{ $pergunta->id }}" class="mr-3" @if($maquina->perguntas->contains('id', $pergunta->id)) checked @endif>
+                  {{ $pergunta->descricao }}
+                </label>
+              </div>
+            @endforeach
           </div>
-      </div>
+        </div>
 
       <button type="submit" class="btn btn-primary ml-auto my-3">Salvar perguntas</button>
   </form>
@@ -49,6 +49,7 @@
                         <tr>
                           <th style="width: 40%">Máquina</th>
                           <th>Perguntas</th>
+                          <th>N° Perguntas</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -61,7 +62,8 @@
                                     {{ $pergunta->descricao }}<br>
                             </span>
                             @endforeach
-                          </td>             
+                          </td> 
+                          <td>{{$maquina->perguntas->count()}}</td>          
                         </tr>
                       
                       </tbody>
