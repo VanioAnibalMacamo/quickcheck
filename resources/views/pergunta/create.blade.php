@@ -23,12 +23,12 @@
                     <label for="finalidade">Finalidade</label>
                         <div>
                             <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="finalidade" id="radioMaquina" value="maquina">
-                            <label class="form-check-label" for="radioMaquina">Máquina</label>
+                                <input class="form-check-input" type="radio" name="finalidade" id="radioMaquina" value="maquina">
+                                <label class="form-check-label" for="radioMaquina">Máquina</label>
                             </div>
                             <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="finalidade" id="radioAtividade" value="atividade">
-                            <label class="form-check-label" for="radioAtividade">Tipo de Atividade</label>
+                                <input class="form-check-input" type="radio" name="finalidade" id="radioAtividade" value="actividade">
+                                <label class="form-check-label" for="radioAtividade">Tipo de Atividade</label>
                             </div>
                         </div>
                     </div>
@@ -41,8 +41,9 @@
                         <input type="submit" class="btn btn-primary" value='Salvar'>
                         <a  href="{{ url('/perguntaIndex') }}" type="button" class="btn btn-warning">Cancelar</a>
                     </div>
+                </div>
               </form>
-            </div>
+        
             <!-- /.card -->
 
 @stop

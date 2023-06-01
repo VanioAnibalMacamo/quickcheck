@@ -19,7 +19,7 @@
               @foreach ($perguntas->chunk(ceil($perguntas->count() / 2))->first() as $pergunta)
                   <div class="checkbox mb-2">
                       <label class="d-flex align-items-center">
-                          <input type="checkbox" name="pergunta_ids[]" value="{{ $pergunta->id }}" class="mr-2">
+                          <input type="checkbox" name="pergunta_ids[]" value="{{ $pergunta->id }}" class="mr-3">
                           {{ $pergunta->descricao }}
                       </label>
                   </div>
@@ -29,7 +29,7 @@
               @foreach ($perguntas->chunk(ceil($perguntas->count() / 2))->last() as $pergunta)
                   <div class="checkbox mb-2">
                       <label class="d-flex align-items-center">
-                          <input type="checkbox" name="pergunta_ids[]" value="{{ $pergunta->id }}" class="mr-2">
+                          <input type="checkbox" name="pergunta_ids[]" value="{{ $pergunta->id }}" class="mr-3">
                           {{ $pergunta->descricao }}
                       </label>
                   </div>

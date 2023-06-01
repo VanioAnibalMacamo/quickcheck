@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1> Cadastrar Pergunta</h1>
+    <h1> Visualizar Pergunta</h1>
       
 @stop
 
@@ -19,6 +19,19 @@
                 @csrf
                 <div class="card-body">
                     <div class="form-group">
+                    <label for="finalidade">Finalidade</label>
+                        <div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="finalidade" id="radioMaquina" value="maquina" @if($pergunta->finalidade == 'maquina') checked @endif disabled>
+                                <label class="form-check-label" for="radioMaquina">Máquina</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="finalidade" id="radioAtividade" value="actividade" @if($pergunta->finalidade == 'actividade') checked @endif disabled>
+                                <label class="form-check-label" for="radioAtividade">Tipo de Atividade</label>
+                            </div>
+
+                            </div>
+                        </div>
                         <label for="inputAddress">Descrição (Pergunta)</label>
                         <input type="text" class="form-control" id="nome" name='descricao' value="{{ $pergunta->descricao }}" placeholder="Digite a pergunta..." readOnly>
                     </div>               
