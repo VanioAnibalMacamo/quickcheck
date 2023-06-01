@@ -10,16 +10,6 @@ class Actividade extends Model
 
     protected $fillable = ['nome','descricao'];
 
-    public function funcionarios()
-    {
-        return $this->belongsToMany(Funcionario::class);
-    }
-
-    public function maquinas()
-    {
-        return $this->belongsToMany(Maquina::class);
-    }
-
     public function area()
     {
         return $this->belongsTo(Area::class);

@@ -16,11 +16,6 @@ class Maquina extends Model
         return $this->belongsToMany(Departamento::class);
     }
 
-    public function actividades()
-    {
-        return $this->belongsToMany(Actividade::class);
-    }
-
     public function perguntas()
     {
         return $this->belongsToMany(Pergunta::class);

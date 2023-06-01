@@ -359,7 +359,7 @@ return [
            
             'submenu' => [
                 [
-                    'text'    => 'Registar Actividades',
+                    'text'    => 'Gerir Check Lists',
                     'url'     => '#',
                     //'icon' => 'fas fa-id-card',
                     
