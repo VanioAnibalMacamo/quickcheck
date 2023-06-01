@@ -17,7 +17,21 @@
               <!-- form start -->
               <form action="{{url('savePergunta')}}" method="POST" enctype="multipart/form-data">
                 @csrf
+                
                 <div class="card-body">
+                <div class="form-group">
+                    <label for="finalidade">Finalidade</label>
+                        <div>
+                            <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="finalidade" id="radioMaquina" value="maquina">
+                            <label class="form-check-label" for="radioMaquina">Máquina</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="finalidade" id="radioAtividade" value="atividade">
+                            <label class="form-check-label" for="radioAtividade">Tipo de Atividade</label>
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label for="inputAddress">Descrição (Pergunta)</label>
                         <input type="text" class="form-control" id="nome" name='descricao' placeholder="Digite a pergunta...">
