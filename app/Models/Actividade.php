@@ -19,5 +19,10 @@ class Actividade extends Model
     {
         return $this->belongsTo(TipoActividade::class);
     }
+
+    public function checklists()
+    {
+        return $this->hasMany(CheckList::class);
+    }
 }
 

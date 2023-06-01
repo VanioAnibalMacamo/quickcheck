@@ -20,4 +20,9 @@ class Maquina extends Model
     {
         return $this->belongsToMany(Pergunta::class);
     }
+
+    public function checklists()
+    {
+        return $this->hasMany(CheckList::class);
+    }
 }

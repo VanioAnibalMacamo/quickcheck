@@ -23,4 +23,9 @@ class Funcionario extends Model
         return $this->belongsTo(Departamento::class);
     }
 
+    public function checklists()
+    {
+        return $this->hasMany(CheckList::class);
+    }
+
 }
