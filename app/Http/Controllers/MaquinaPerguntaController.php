@@ -14,7 +14,7 @@ class MaquinaPerguntaController extends Controller
     }
     public function create()
     {   $maquinas = Maquina::all();
-        $perguntas = Pergunta::where('finalidade', 'maquina')->get();
+         $perguntas = Pergunta::where('finalidade', 'maquina')->get();
         return view('maquina_pergunta.create', compact('maquinas', 'perguntas'));
     }
 

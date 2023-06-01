@@ -96,10 +96,9 @@ Route::get('/visualizar_maquinaPergunta/{id}',[App\Http\Controllers\MaquinaPergu
 Route::delete('/maquinaPergunta/{id}', 'App\Http\Controllers\MaquinaPerguntaController@delete')->name('maquina_perguntas.delete');
 Route::post('/maquina/{maquina}/salvar-perguntas', 'App\Http\Controllers\MaquinaPerguntaController@salvarPerguntas')->name('maquina.salvar-perguntas');
 
-
-Route::get('/maquina_perguntaIndex', [App\Http\Controllers\MaquinaPerguntaController::class, 'index'])->name('maquina_perguntaIndex');
-
-
+Route::get('/tipo_actividade_perguntaIndex', [App\Http\Controllers\TipoActividadePerguntaController::class, 'index'])->name('tipo_actividade_perguntaIndex');
+Route::get('/update_tipoActividadePergunta/{id}',[App\Http\Controllers\TipoActividadePerguntaController::class,'update_view']);
+Route::post('/tipoActividade/{tipoAactividade}/salvar-perguntas', 'App\Http\Controllers\TipoActividadePerguntaController@salvarPerguntas')->name('tipoActividade.salvar-perguntas');
 
 
 

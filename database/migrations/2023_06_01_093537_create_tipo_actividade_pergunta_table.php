@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tipo_actividade_pergunta', function (Blueprint $table) {
+        Schema::create('tipo_atividade_pergunta', function (Blueprint $table) {
             $table->unsignedBigInteger('tipo_actividade_id');
             $table->unsignedBigInteger('pergunta_id');
             $table->timestamps();
@@ -23,11 +23,6 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('tipo_atividade_pergunta');
