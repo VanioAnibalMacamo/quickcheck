@@ -25,4 +25,9 @@ class CheckList extends Model
     {
         return $this->belongsTo(Maquina::class);
     }
+
+    public function respostas()
+    {
+        return $this->hasMany(Resposta::class);
+    }
 }

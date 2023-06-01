@@ -21,5 +21,9 @@ class Pergunta extends Model
         return $this->belongsToMany(TipoActividade::class);
     }
 
+    public function respostas()
+    {
+        return $this->hasMany(Resposta::class);
+    }
 
 }
