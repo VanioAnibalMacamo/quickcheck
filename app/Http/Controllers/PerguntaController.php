@@ -21,8 +21,9 @@ class PerguntaController extends Controller
 
     public function savePergunta(Request $request){
         $pergunta = new Pergunta();
-        
-        $pergunta->descricao  =$request->descricao;
+       
+        $pergunta->descricao  = $request->descricao;
+        $pergunta->finalidade = $request->input('finalidade');
 
         $pergunta->save();
         return redirect()->route('perguntaIndex')->with('mensagem', 'Pergunta Cadastrada com sucesso!');
@@ -37,6 +38,7 @@ class PerguntaController extends Controller
        
         $pergunta = Pergunta :: find($id);
         $pergunta->descricao  =$request->descricao;
+        $pergunta = $request->input('finalidade');
 
         $pergunta->save();
         return redirect()->route('perguntaIndex')->with('mensagem', 'Pergunta Actualizada com sucesso!'); 

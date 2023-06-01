@@ -29,8 +29,9 @@
                 <table class="table table-striped">
                   <thead>
                     <tr>
-                      <th style="width: 10px">#</th>
-                      <th>Descrição</th>
+                      <th style="width: 10%">#</th>
+                      <th style="width: 50%">Descrição</th>
+                      <th style="width: 30%">Finalidade</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -38,6 +39,7 @@
                     <tr>
                       <td>{{ $loop->index + 1 }}</td>
                       <td>{{ $pergunta->descricao}}</td>
+                      <td>{{ $pergunta->finalidade}}</td>
                       <td> 
                             <!-- Large modal -->
                             <a  class="btn btn-primary btn-sm d-inline" href="{{url('visualizar_pergunta',$pergunta->id)}}"><i class="fas fa-eye"></i></a>
