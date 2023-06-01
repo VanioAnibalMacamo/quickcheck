@@ -365,8 +365,14 @@ return [
                     
                 ],
                 [
-                    'text'    => 'Alocação de Perguntas',
+                    'text'    => 'Alocação para Máquinas',
                     'url'     => 'maquina_perguntaIndex',
+                    //'icon' => 'fas fa-id-card',
+                    
+                ],
+                [
+                    'text'    => 'Alocação para Tipo Actividades',
+                    'url'     => 'tipo_actividade_perguntaIndex',
                     //'icon' => 'fas fa-id-card',
                     
                 ],

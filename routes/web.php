@@ -15,7 +15,7 @@ use App\Http\Controllers\FuncionarioController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Auth::routes();
@@ -94,8 +94,11 @@ Route::get('/update_maquinaPergunta/{id}',[App\Http\Controllers\MaquinaPerguntaC
 Route::post('/updateMaquinaPergunta/{id}',[App\Http\Controllers\MaquinaPerguntaController::class,'update']);
 Route::get('/visualizar_maquinaPergunta/{id}',[App\Http\Controllers\MaquinaPerguntaController::class,'visualizar_view']);
 Route::delete('/maquinaPergunta/{id}', 'App\Http\Controllers\MaquinaPerguntaController@delete')->name('maquina_perguntas.delete');
-
 Route::post('/maquina/{maquina}/salvar-perguntas', 'App\Http\Controllers\MaquinaPerguntaController@salvarPerguntas')->name('maquina.salvar-perguntas');
+
+
+Route::get('/maquina_perguntaIndex', [App\Http\Controllers\MaquinaPerguntaController::class, 'index'])->name('maquina_perguntaIndex');
+
 
 
 
