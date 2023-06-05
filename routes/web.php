@@ -101,4 +101,7 @@ Route::get('/update_tipoActividadePergunta/{id}',[App\Http\Controllers\TipoActiv
 Route::post('/tipoActividade/{tipoAactividade}/salvar-perguntas', 'App\Http\Controllers\TipoActividadePerguntaController@salvarPerguntas')->name('tipoActividade.salvar-perguntas');
 
 
+Route::get('/checkListIndex', [App\Http\Controllers\CheckListController::class, 'index'])->name('checkListIndex');
+Route::resource('checklists', 'App\Http\Controllers\CheckListController');
+Route::post('App\Http\Controllers\CheckListController', 'checklistController@search')->name('search');
 

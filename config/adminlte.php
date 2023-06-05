@@ -360,7 +360,7 @@ return [
             'submenu' => [
                 [
                     'text'    => 'Gerir Check Lists',
-                    'url'     => '#',
+                    'url'     => 'checklists',
                     //'icon' => 'fas fa-id-card',
                     
                 ],
