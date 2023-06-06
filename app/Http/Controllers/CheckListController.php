@@ -44,6 +44,7 @@ class CheckListController extends Controller
         $dadosRecebidos = session()->all();
          return view('checklists.create', compact('actividades', 'maquinas', 'funcionarios', 'perguntas','dadosRecebidos'));
     }
+    
     public function preencher(Request $request)
     {
         $nome = $request->input('nome');
