@@ -104,4 +104,6 @@ Route::post('/tipoActividade/{tipoAactividade}/salvar-perguntas', 'App\Http\Cont
 Route::get('/checkListIndex', [App\Http\Controllers\CheckListController::class, 'index'])->name('checkListIndex');
 Route::resource('checklists', 'App\Http\Controllers\CheckListController');
 Route::post('App\Http\Controllers\CheckListController', 'checklistController@search')->name('search');
+Route::get('/preenchimento',[App\Http\Controllers\CheckListController::class, 'preenchimento'])->name('preenchimento');
+Route::post('/preencher', 'App\Http\Controllers\CheckListController@preencher')->name('receber.dados');
 

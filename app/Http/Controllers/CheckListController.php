@@ -41,9 +41,27 @@ class CheckListController extends Controller
         $funcionarios = Funcionario::all();
         $perguntas = Pergunta::all();
 
-        return view('checklists.create', compact('actividades', 'maquinas', 'funcionarios', 'perguntas'));
+        $dadosRecebidos = session()->all();
+         return view('checklists.create', compact('actividades', 'maquinas', 'funcionarios', 'perguntas','dadosRecebidos'));
     }
-
+    public function preencher(Request $request)
+    {
+        $nome = $request->input('nome');
+        $descricao = $request->input('descricao');
+        $actividade = $request->input('actividade');
+        $maquina = $request->input('maquina');
+        $funcionario = $request->input('funcionario');
+        
+        $dados = [
+            'nome' => $nome,
+            'descricao' => $descricao,
+            'actividade' => $actividade,
+            'maquina' => $maquina,
+            'funcionario' => $funcionario
+        ];
+    
+        return redirect()->route('checklists.create')->with($dados);
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -85,7 +103,17 @@ class CheckListController extends Controller
         return response()->json(['results' => $results]);
     }
 
+    public function preenchimento()
+    {
+        //
+        $actividades = Actividade::all();
+        $maquinas = Maquina::all();
+        $funcionarios = Funcionario::all();
+        $perguntas = Pergunta::all();
 
+        return view('checklists.preenchimento', compact('actividades', 'maquinas', 'funcionarios', 'perguntas'));
+    }
+   
     /**
      * Display the specified resource.
      *
