@@ -9,6 +9,12 @@
 
 @section('content')
 <div class="card card-primary">
+@if (session('mensagem'))
+          <div class="alert alert-success">{{ session('mensagem') }}</div>
+      @endif
+      @if (session('successDelete'))
+          <div class="alert alert-danger">{{ session('successDelete') }}</div>
+      @endif
 <form action="{{url('preencher')}}" method="POST" enctype="multipart/form-data">
     @csrf
 
@@ -64,6 +70,12 @@
 
 @section('js')
     <script> console.log('Hi!'); </script>
+    <script> console.log('Hi!'); </script>
+    <script>
+      setTimeout(function() {
+          document.querySelector('.alert').remove();
+      }, 5000);
+</script>
     
 
 @stop

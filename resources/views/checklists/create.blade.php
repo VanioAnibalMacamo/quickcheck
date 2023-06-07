@@ -9,7 +9,8 @@
 
 @section('content')
 <div class="card card-primary">
-         <form action="{{ route('checklists.store') }}" method="POST">
+       
+    <form action="{{url('saveCheckList')}}" method="POST" enctype="multipart/form-data">
             @csrf
 
             <div class="form-group" style="margin-top: 20px; margin-left: 10px; margin-right: 10px;">
@@ -84,7 +85,7 @@
                             </label>
                         </td>
                         <td>
-                        <input type="text" class="form-control" id="descricao"  name="perguntas[{{ $pergunta->id }}]" placeholder="Comentário">
+                        <input type="text" class="form-control" id="descricao"  name="perguntas_descricao[{{ $pergunta->id }}]" placeholder="Comentário">
                         </td>
                     </tr>
                     @endforeach
@@ -106,46 +107,6 @@
 
 @section('js')
     <script> console.log('Hi!'); </script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#searchButton').click(function(event) {
-                event.preventDefault(); 
-              
-                // Obter os valores dos campos de entrada
-                var actividade = $('#actividadeInput').val();
-                var maquina = $('#maquinaInput').val();
-               
-                // Enviar os dados para o controlador Laravel via AJAX
-                $.ajax({
-                    url: '{{ route('search') }}',
-                    type: 'POST',
-                    data: {
-                        actividade: actividade,
-                        maquina: maquina
-                    },
-                    success: function(response) {
-                    var results = response.results;
-
-                    // Limpar a tabela antes de atualizar com os novos resultados
-                    $('#resultsTable tbody').empty();
-
-                    // Adicionar cada resultado como uma nova linha na tabela
-                    results.forEach(function(result) {
-                        var row = '<tr>' +
-                            '<td>' + result.id + '</td>' +
-                            '<td>' + result.nome + '</td>' +
-                            '<td>' + result.data + '</td>' +
-                            '</tr>';
-                        $('#resultsTable tbody').append(row);
-                    });
-                },
-                error: function(xhr, status, error) {
-                    console.log(error);
-                }
-                });
-            });
-        });
-    </script>
+   
 
 @stop

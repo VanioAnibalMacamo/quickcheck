@@ -106,4 +106,5 @@ Route::resource('checklists', 'App\Http\Controllers\CheckListController');
 Route::post('App\Http\Controllers\CheckListController', 'checklistController@search')->name('search');
 Route::get('/preenchimento',[App\Http\Controllers\CheckListController::class, 'preenchimento'])->name('preenchimento');
 Route::post('/preencher', 'App\Http\Controllers\CheckListController@preencher')->name('receber.dados');
+Route::post('/saveCheckList',[App\Http\Controllers\CheckListController::class,'saveCheckList'])->middleware('web');
 

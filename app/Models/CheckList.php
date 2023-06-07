@@ -9,6 +9,7 @@ class CheckList extends Model
 {
     use HasFactory;
 
+    protected $table = 'checklists';
     protected $fillable = ['nome', 'descricao', 'data'];
     
     public function funcionario()
