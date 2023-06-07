@@ -23,14 +23,20 @@ class CheckListController extends Controller
     public function index()
     {
         //
+        $checklists = CheckList::orderBy('id', 'desc')->paginate(8);
+        return view('checklists.index',['checklists' => $checklists]);
+    }
+    public function visualizar_view($id){
+
+        //
         $actividades = Actividade::all();
         $maquinas = Maquina::all();
         $funcionarios = Funcionario::all();
-        $perguntas = Pergunta::all();
-
-        return view('checklists.create', compact('actividades', 'maquinas', 'funcionarios', 'perguntas'));
+       
+        $checklist = CheckList :: find($id);
+         $perguntas = Pergunta::all();
+        return view('/checklists/view', compact('checklist','actividades', 'maquinas', 'funcionarios', 'perguntas'));
     }
-
     /**
      * Show the form for creating a new resource.
      *

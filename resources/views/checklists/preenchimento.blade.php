@@ -58,6 +58,7 @@
     </div>
     <div class="card-footer text-center">
         <input type="submit" class="btn btn-primary" value='Submeter'>
+        <a  href="{{ url('/checkListIndex') }}" type="button" class="btn btn-warning">Voltar</a>
     </div>
 </form>
 

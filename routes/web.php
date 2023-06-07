@@ -100,11 +100,10 @@ Route::get('/tipo_actividade_perguntaIndex', [App\Http\Controllers\TipoActividad
 Route::get('/update_tipoActividadePergunta/{id}',[App\Http\Controllers\TipoActividadePerguntaController::class,'update_view']);
 Route::post('/tipoActividade/{tipoAactividade}/salvar-perguntas', 'App\Http\Controllers\TipoActividadePerguntaController@salvarPerguntas')->name('tipoActividade.salvar-perguntas');
 
-
 Route::get('/checkListIndex', [App\Http\Controllers\CheckListController::class, 'index'])->name('checkListIndex');
 Route::resource('checklists', 'App\Http\Controllers\CheckListController');
 Route::post('App\Http\Controllers\CheckListController', 'checklistController@search')->name('search');
 Route::get('/preenchimento',[App\Http\Controllers\CheckListController::class, 'preenchimento'])->name('preenchimento');
 Route::post('/preencher', 'App\Http\Controllers\CheckListController@preencher')->name('receber.dados');
 Route::post('/saveCheckList',[App\Http\Controllers\CheckListController::class,'saveCheckList'])->middleware('web');
-
+Route::get('/visualizar_checklist/{id}',[App\Http\Controllers\CheckListController::class,'visualizar_view']);
