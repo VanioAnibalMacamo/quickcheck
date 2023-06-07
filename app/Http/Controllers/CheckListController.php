@@ -10,6 +10,7 @@ use App\Models\Actividade;
 use App\Models\Maquina;
 use App\Models\Funcionario;
 use App\Models\Pergunta;
+use App\Models\TipoActividade;
 
 class CheckListController extends Controller
 {
@@ -39,10 +40,40 @@ class CheckListController extends Controller
         $actividades = Actividade::all();
         $maquinas = Maquina::all();
         $funcionarios = Funcionario::all();
-        $perguntas = Pergunta::all();
-
+        
         $dadosRecebidos = session()->all();
-         return view('checklists.create', compact('actividades', 'maquinas', 'funcionarios', 'perguntas','dadosRecebidos'));
+        $actividade = Actividade::find($dadosRecebidos['actividade']);
+        
+        if ($actividade) {
+            $tipoActividade = TipoActividade::findOrFail($actividade->tipo_actividade_id);
+             $tipoActividadeId = $tipoActividade->id;
+
+            $maquinaId = $dadosRecebidos['maquina'];
+         
+            $perguntas = Pergunta::whereHas('tipoActividades', function ($query) use ($tipoActividadeId) {
+                $query->where('tipo_actividade_id', $tipoActividadeId);
+            })->whereHas('maquinas', function ($query) use ($maquinaId) {
+                $query->where('maquina_id', $maquinaId);
+            })->get();$perguntas = Pergunta::where(function ($query) use ($maquinaId, $tipoActividadeId) {
+                $query->where(function ($query) use ($maquinaId) {
+                    $query->where('finalidade', 'maquina')
+                          ->whereHas('maquinas', function ($query) use ($maquinaId) {
+                              $query->where('maquina_id', $maquinaId);
+                          });
+                })->orWhere(function ($query) use ($tipoActividadeId) {
+                    $query->where('finalidade', 'actividade')
+                          ->whereHas('tipoActividades', function ($query) use ($tipoActividadeId) {
+                              $query->where('tipo_actividade_id', $tipoActividadeId);
+                          });
+                });
+            })->get();
+            
+
+            return view('checklists.create', compact('maquinas', 'funcionarios', 'perguntas', 'actividades', 'dadosRecebidos'));
+        } else {
+           
+        }
+
     }
     
     public function preencher(Request $request)

@@ -18,7 +18,7 @@ class Pergunta extends Model
 
     public function tipoActividades()
     {
-        return $this->belongsToMany(TipoActividade::class);
+        return $this->belongsToMany(TipoActividade::class, 'tipo_atividade_pergunta');
     }
 
     public function respostas()
