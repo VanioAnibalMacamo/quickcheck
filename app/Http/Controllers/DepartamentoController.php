@@ -44,6 +44,8 @@ class DepartamentoController extends Controller
         $departamento->nome=$request->nome;
         $departamento->sigla=$request->sigla;
         $departamento->descricao=$request->descricao;
+        $departamento->departamento_id=$request->departamento;
+
 
         $departamento->save();
 
@@ -53,6 +55,7 @@ class DepartamentoController extends Controller
     public function visualizar_view($id){
         $departamento = Departamento :: find($id);
         return view('/departamento/view', compact('departamento'));
+       
     }
     public function delete($id)
     {

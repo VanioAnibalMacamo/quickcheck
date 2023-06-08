@@ -29,12 +29,21 @@
                         <label for="inputEmail4">Descricao</label>
                         <input type="text" class="form-control" id="descricao" name='descricao' value="{{ $departamento->descricao }}"placeholder="ex: Estamos todos juntos"readonly>
                         </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                        <label for="inputState">Departamento</label>
+                        <select id="inputState" class="form-control" name='departamento' readonly>
+                            <option selected>Seleccione...</option>
 
                         
-                    <div class="card-footer">
-                        <input type="submit" class="btn btn-primary" value='Salvar'>
-                        <a  href="{{ url('/depIndex') }}" type="button" class="btn btn-warning">Cancelar</a>
+                        </select>
+                        </div>
+
+                        <div class="card-footer">
+                    
+                        <a  href="{{ url('/depIndex') }}" type="button" class="btn btn-warning">Voltar</a>
                     </div>
+                    
                     </div>
                   
               </form>
