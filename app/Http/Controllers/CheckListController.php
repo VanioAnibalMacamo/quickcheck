@@ -85,24 +85,7 @@ class CheckListController extends Controller
         } 
     }
     
-    public function preencher(Request $request)
-    {
-        $nome = $request->input('nome');
-        $descricao = $request->input('descricao');
-        $actividade = $request->input('actividade');
-        $maquina = $request->input('maquina');
-        $funcionario = $request->input('funcionario');
-        
-        $dados = [
-            'nome' => $nome,
-            'descricao' => $descricao,
-            'actividade' => $actividade,
-            'maquina' => $maquina,
-            'funcionario' => $funcionario
-        ];
-    
-        return redirect()->route('checklists.create')->with($dados);
-    }
+   
     /**
      * Store a newly created resource in storage.
      *
@@ -144,16 +127,6 @@ class CheckListController extends Controller
         return response()->json(['results' => $results]);
     }
 
-    public function preenchimento()
-    {
-        //
-        $actividades = Actividade::all();
-        $maquinas = Maquina::all();
-        $funcionarios = Funcionario::all();
-        $perguntas = Pergunta::all();
-
-        return view('checklists.preenchimento', compact('actividades', 'maquinas', 'funcionarios', 'perguntas'));
-    }
    
     public function saveCheckList (Request $request)
     {
@@ -180,5 +153,45 @@ class CheckListController extends Controller
         // Redirecione para a página desejada ou retorne uma resposta JSON
         return redirect('preenchimento')->with('mensagem', 'Checklist salvo com sucesso!');
     }
+    public function update_preenchimento_view($id){
+        $checklist = Checklist :: find($id);
+
+        $actividades = Actividade::all();
+        $maquinas = Maquina::all();
+        $funcionarios = Funcionario::all();
+        $perguntas = Pergunta::all();
+
+      //  return view('checklists.preenchimento', compact('actividades', 'maquinas', 'funcionarios', 'perguntas'));
+        return view('/checklists/edit_preenchimento', compact('checklist','actividades', 'maquinas', 'funcionarios', 'perguntas'));
+    }
+    public function preencher(Request $request)
+    {
+        $nome = $request->input('nome');
+        $descricao = $request->input('descricao');
+        $actividade = $request->input('actividade');
+        $maquina = $request->input('maquina');
+        $funcionario = $request->input('funcionario');
+        
+        $dados = [
+            'nome' => $nome,
+            'descricao' => $descricao,
+            'actividade' => $actividade,
+            'maquina' => $maquina,
+            'funcionario' => $funcionario
+        ];
+    
+        return redirect()->route('checklists.create')->with($dados);
+    }
+    public function preenchimento()
+    {
+        //
+        $actividades = Actividade::all();
+        $maquinas = Maquina::all();
+        $funcionarios = Funcionario::all();
+        $perguntas = Pergunta::all();
+
+        return view('checklists.preenchimento', compact('actividades', 'maquinas', 'funcionarios', 'perguntas'));
+    }
+   
    
 }

@@ -46,7 +46,9 @@
                     <td> 
                          <!-- Large modal -->
                         <a  class="btn btn-primary btn-sm d-inline" href="{{url('visualizar_checklist',$checklist->id)}}"><i class="fas fa-eye"></i></a> 
-                      </td>
+                        <a class="btn btn-info btn-sm d-inline"  href="{{url('update_preenchimento_checklist',$checklist->id)}}"> <i class="fas fa-pencil-alt"></i></a>
+                            
+                    </td>
                      
                 </tr>
             @endforeach
