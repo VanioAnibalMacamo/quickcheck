@@ -109,3 +109,4 @@ Route::get('/preenchimento',[App\Http\Controllers\CheckListController::class, 'p
 Route::post('/preencher', 'App\Http\Controllers\CheckListController@preencher')->name('receber.dados');
 Route::post('/saveCheckList',[App\Http\Controllers\CheckListController::class,'saveCheckList'])->middleware('web');
 Route::get('/visualizar_checklist/{id}',[App\Http\Controllers\CheckListController::class,'visualizar_view']);
+Route::get('/update_preenchimento_checklist/{id}',[App\Http\Controllers\CheckListController::class,'update_preenchimento_view']);

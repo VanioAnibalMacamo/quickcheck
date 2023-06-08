@@ -72,22 +72,17 @@
                     <tbody>
 
                     </tbody>
-                    @foreach ($perguntas as $pergunta)
-                    <tr>
-                        <td>{{ $loop->index + 1 }}</td>
-                        <td>{{ $pergunta->descricao }}</td>
-                        <td>
-                            <label>
-                                <input type="radio" name="perguntas[{{ $pergunta->id }}]" value="Opção 1"> Sim
-                            </label>
-                            <label>
-                                <input type="radio" name="perguntas[{{ $pergunta->id }}]" value="Opção 2"> Não
-                            </label>
-                        </td>
-                        <td>
-                        <input type="text" class="form-control" id="descricao"  name="perguntas_descricao[{{ $pergunta->id }}]" placeholder="Comentário">
-                        </td>
-                    </tr>
+                    @foreach ($respostas as $resposta)
+                        <tr>
+                            <td>{{ $loop->index + 1 }}</td>
+                            <td>{{ $resposta->pergunta->descricao }}</td>
+                            <td>
+                                <input type="text" class="form-control" name="respostas[{{ $resposta->pergunta->id }}]" value="{{ $resposta->nome == 'Sim' ? 'Sim' : 'Não' }}" disabled>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" name="respostas_descricao[{{ $resposta->pergunta->id }}]" placeholder="Sem Comentários" value="{{ $resposta->descricao }}" disabled>
+                            </td>
+                        </tr>
                     @endforeach
                 </table>
                 </div>
