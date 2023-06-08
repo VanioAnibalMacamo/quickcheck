@@ -47,6 +47,8 @@ Route::post('/updateDep/{id}',[App\Http\Controllers\DepartamentoController::clas
 Route::get('/visualizar_departamento/{id}',[App\Http\Controllers\DepartamentoController::class,'visualizar_view']);
 Route::post('/visualizarDep/{id}',[App\Http\Controllers\DepartamentoController::class,'visualizar']);
 
+
+
 Route::get('/areaIndex', [App\Http\Controllers\AreaController::class, 'index'])->name('areaIndex');
 Route::get('/areaCreate', [App\Http\Controllers\AreaController::class, 'create'])->name('areaCreate');
 Route::post('/saveArea',[App\Http\Controllers\AreaController::class,'saveArea'])->middleware('web');

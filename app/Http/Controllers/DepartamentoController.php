@@ -54,4 +54,11 @@ class DepartamentoController extends Controller
         $departamento = Departamento :: find($id);
         return view('/departamento/view', compact('departamento'));
     }
+    public function delete($id)
+    {
+        $departamento = departamento::find($id);
+        $departamento->delete();
+       
+        return redirect()->route('depIndex')->with('successDelete', 'Departamento Excluido com Sucesso!');
+    }
 }
