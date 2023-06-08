@@ -34,8 +34,13 @@ class CheckListController extends Controller
         $funcionarios = Funcionario::all();
        
         $checklist = CheckList :: find($id);
-         $perguntas = Pergunta::all();
-        return view('/checklists/view', compact('checklist','actividades', 'maquinas', 'funcionarios', 'perguntas'));
+      //  $perguntas = Pergunta::all();
+
+        $respostas = Resposta::where('checklist_id', $checklist->id)->get();
+            $perguntas = $respostas->map(function ($resposta) {
+                return $resposta->pergunta;
+            });
+        return view('/checklists/view', compact('checklist','actividades', 'maquinas', 'funcionarios', 'respostas'));
     }
     /**
      * Show the form for creating a new resource.
@@ -77,10 +82,7 @@ class CheckListController extends Controller
             
 
             return view('checklists.create', compact('maquinas', 'funcionarios', 'perguntas', 'actividades', 'dadosRecebidos'));
-        } else {
-           
-        }
-
+        } 
     }
     
     public function preencher(Request $request)
@@ -153,9 +155,6 @@ class CheckListController extends Controller
         return view('checklists.preenchimento', compact('actividades', 'maquinas', 'funcionarios', 'perguntas'));
     }
    
-
-
-
     public function saveCheckList (Request $request)
     {
         // Crie um novo Checklist com os dados recebidos
@@ -181,48 +180,5 @@ class CheckListController extends Controller
         // Redirecione para a página desejada ou retorne uma resposta JSON
         return redirect('preenchimento')->with('mensagem', 'Checklist salvo com sucesso!');
     }
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+   
 }

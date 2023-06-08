@@ -78,10 +78,10 @@
                         <td>{{ $pergunta->descricao }}</td>
                         <td>
                             <label>
-                                <input type="radio" name="perguntas[{{ $pergunta->id }}]" value="Opção 1"> Sim
+                                <input type="radio" name="perguntas[{{ $pergunta->id }}]" value="Sim"> Sim
                             </label>
                             <label>
-                                <input type="radio" name="perguntas[{{ $pergunta->id }}]" value="Opção 2"> Não
+                                <input type="radio" name="perguntas[{{ $pergunta->id }}]" value="Nao"> Não
                             </label>
                         </td>
                         <td>
