@@ -46,7 +46,7 @@ Route::get('/update_departamento/{id}',[App\Http\Controllers\DepartamentoControl
 Route::post('/updateDep/{id}',[App\Http\Controllers\DepartamentoController::class,'update']);
 Route::get('/visualizar_departamento/{id}',[App\Http\Controllers\DepartamentoController::class,'visualizar_view']);
 Route::post('/visualizarDep/{id}',[App\Http\Controllers\DepartamentoController::class,'visualizar']);
-
+Route::delete('/departamento/{id}', 'App\Http\Controllers\DepartamentoController@delete')->name('departamentos.delete');
 
 
 Route::get('/areaIndex', [App\Http\Controllers\AreaController::class, 'index'])->name('areaIndex');
@@ -109,4 +109,3 @@ Route::get('/preenchimento',[App\Http\Controllers\CheckListController::class, 'p
 Route::post('/preencher', 'App\Http\Controllers\CheckListController@preencher')->name('receber.dados');
 Route::post('/saveCheckList',[App\Http\Controllers\CheckListController::class,'saveCheckList'])->middleware('web');
 Route::get('/visualizar_checklist/{id}',[App\Http\Controllers\CheckListController::class,'visualizar_view']);
-Route::get('/update_preenchimento_checklist/{id}',[App\Http\Controllers\CheckListController::class,'update_preenchimento_view']);
