@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FuncionarioController;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +29,8 @@ Route::get('/dashboard', function () {
 
 
 Route::get('/userIndex',function(){
-    return view('users.index');
+    $users = User::all(); 
+    return view('users.index',compact('users'));
 })->middleware(['auth'])->name('userIndex');
 
 Route::get('/funcIndex', [App\Http\Controllers\FuncionarioController::class, 'index'])->name('funcIndex');
