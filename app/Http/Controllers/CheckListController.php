@@ -232,6 +232,17 @@ class CheckListController extends Controller
         return redirect()->route('checklists.index')->with('mensagem', 'CheckList actualizadp com sucesso!');
 
     }
+    public function delete($id)
+    {
+        $checklist = CheckList :: find($id);
+        Resposta::where('checklist_id', $id)->delete();
+
+        $checklist->delete();
+
+        $respostas = Resposta::where('checklist_id', $checklist->id)->get();
+       
+        return redirect()->route('checklists.index')->with('successDelete', 'Checklist Excluido com Sucesso!');
+    }
 
     
 }

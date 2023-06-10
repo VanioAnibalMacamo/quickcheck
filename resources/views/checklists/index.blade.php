@@ -47,7 +47,11 @@
                          <!-- Large modal -->
                         <a  class="btn btn-primary btn-sm d-inline" href="{{url('visualizar_checklist',$checklist->id)}}"><i class="fas fa-eye"></i></a> 
                         <a class="btn btn-info btn-sm d-inline"  href="{{url('update_preenchimento_checklist',$checklist->id)}}"> <i class="fas fa-pencil-alt"></i></a>
-                            
+                        <form id="form-excluir" action="{{ route('checklists.delete', ['id' => $checklist->id]) }}" method="POST" class="d-inline">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="confirmDelete(event, '{{ $checklist->nome }}')"><i class="fas fa-trash"></i></button>
+                        </form>
                     </td>
                      
                 </tr>
@@ -66,10 +70,30 @@
 @stop
 
 @section('js')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script> console.log('Hi!'); </script>
 <script>
     setTimeout(function() {
         document.querySelector('.alert').remove();
     }, 5000);
+</script>
+<script>
+    function confirmDelete(event, nome) {
+        event.preventDefault(); // Prevenir envio do formulário padrão
+        
+        Swal.fire({
+            title: 'Tem certeza que deseja excluir o Checklist '+nome+'?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Sim, excluir!',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('form-excluir').submit(); // Enviar formulário após confirmação
+            }
+        });
+    }
 </script>
 @stop
