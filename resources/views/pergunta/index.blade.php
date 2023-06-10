@@ -47,7 +47,7 @@
                             <form id="form-excluir" action="{{ route('perguntas.delete', ['id' => $pergunta->id]) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja excluir a Pergunta {{ $pergunta->descricao }}?')"><i class="fas fa-trash"> </i></button>
+                                <button type="submit" class="btn btn-danger btn-sm" onclick="confirmDelete(event, '{{ $pergunta->nome }}')"><i class="fas fa-trash"></i></button>
                             </form>
                       </td>
                      
@@ -75,5 +75,25 @@
         setTimeout(function() {
             document.querySelector('.alert').remove();
         }, 5000);
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    function confirmDelete(event, nome) {
+        event.preventDefault(); // Prevenir envio do formulário padrão
+        
+        Swal.fire({
+            title: 'Tem certeza que deseja excluir a pergunta '+nome+'?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Sim, excluir!',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('form-excluir').submit(); // Enviar formulário após confirmação
+            }
+        });
+    }
 </script>
 @stop

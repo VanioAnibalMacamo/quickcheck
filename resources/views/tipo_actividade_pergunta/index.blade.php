@@ -66,4 +66,24 @@
           document.querySelector('.alert').remove();
       }, 5000);
 </script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    function confirmDelete(event, nome) {
+        event.preventDefault(); // Prevenir envio do formulário padrão
+        
+        Swal.fire({
+            title: 'Tem certeza que deseja excluir o Funncionario '+nome+'?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Sim, excluir!',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('form-excluir').submit(); // Enviar formulário após confirmação
+            }
+        });
+    }
+</script>
 @stop

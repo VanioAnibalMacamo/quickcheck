@@ -55,7 +55,7 @@
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm" onclick="confirmDelete(event, '{{ $funcionario->nome }}')"><i class="fas fa-trash"></i></button>
-                              </form>
+                            </form>
                       </td>
                     </tr>
                    @endforeach
@@ -160,7 +160,7 @@
         event.preventDefault(); // Prevenir envio do formulário padrão
         
         Swal.fire({
-            title: 'Tem certeza que deseja excluir o Funncionario '+nome+'?',
+            title: 'Tem certeza que deseja excluir o Funcionario '+nome+'?',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#d33',
