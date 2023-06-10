@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FuncionarioController;
 use App\Models\User;
+use App\Models\Checklist;
+use App\Models\Maquina;
+use App\Models\Actividade;
+use App\Models\Funcionario;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +28,12 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $numChecklists = Checklist::count(); // Contagem de checklists
+    $numMaquinas = Maquina::count(); // Contagem de máquinas
+    $numAtividades = Actividade::count(); // Contagem de atividades
+    $numFuncionarios = Funcionario::count(); // Contagem de funcionários
+    
+    return view('dashboard', compact('numChecklists', 'numMaquinas', 'numAtividades', 'numFuncionarios'));
 })->middleware(['auth'])->name('dashboard');
 
 
