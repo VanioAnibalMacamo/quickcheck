@@ -72,22 +72,42 @@
                     <tbody>
 
                     </tbody>
-                    @foreach ($perguntas as $pergunta)
-                    <tr>
-                        <td>{{ $loop->index + 1 }}</td>
-                        <td>{{ $pergunta->descricao }}</td>
-                        <td>
-                            <label>
-                                <input type="radio" name="perguntas[{{ $pergunta->id }}]" value="Sim"> Sim
-                            </label>
-                            <label>
-                                <input type="radio" name="perguntas[{{ $pergunta->id }}]" value="Nao"> Não
-                            </label>
-                        </td>
-                        <td>
-                        <input type="text" class="form-control" id="descricao"  name="perguntas_descricao[{{ $pergunta->id }}]" placeholder="Comentário">
-                        </td>
-                    </tr>
+                    @php
+                        // Ordenar as perguntas por finalidade
+                        $perguntasOrdenadas = $perguntas->sortBy('finalidade');
+                        // Variável para armazenar a finalidade atual
+                        $finalidadeAtual = null;
+                    @endphp
+
+                    @foreach ($perguntasOrdenadas as $pergunta)
+                        @if ($pergunta->finalidade != $finalidadeAtual)
+                            <!-- Adicionar uma linha para a nova finalidade -->
+                            <tr>
+                            <th colspan="4" class="text-center" style="background-color: #e9ecef; color: #333;">
+                                Perguntas sobre {{ $pergunta->finalidade }}s
+                            </th>
+                            </tr>
+                            @php
+                                // Atualizar a finalidade atual
+                                $finalidadeAtual = $pergunta->finalidade;
+                            @endphp
+                        @endif
+
+                        <tr>
+                            <td>{{ $loop->index + 1 }}</td>
+                            <td>{{ $pergunta->descricao }}</td>
+                            <td>
+                                <label>
+                                    <input type="radio" name="perguntas[{{ $pergunta->id }}]" value="Sim"> Sim
+                                </label>
+                                <label>
+                                    <input type="radio" name="perguntas[{{ $pergunta->id }}]" value="Nao"> Não
+                                </label>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" id="descricao" name="perguntas_descricao[{{ $pergunta->id }}]" placeholder="Comentário">
+                            </td>
+                        </tr>
                     @endforeach
                 </table>
                 </div>

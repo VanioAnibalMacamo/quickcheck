@@ -25,7 +25,14 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', function () {
+    $numChecklists = Checklist::count(); // Contagem de checklists
+    $numMaquinas = Maquina::count(); // Contagem de máquinas
+    $numAtividades = Actividade::count(); // Contagem de atividades
+    $numFuncionarios = Funcionario::count(); // Contagem de funcionários
+    
+    return view('home', compact('numChecklists', 'numMaquinas', 'numAtividades', 'numFuncionarios'));
+})->middleware(['auth'])->name('home');
 
 Route::get('/dashboard', function () {
     $numChecklists = Checklist::count(); // Contagem de checklists
