@@ -41,8 +41,25 @@ class CheckListController extends Controller
              return $resposta->pergunta;
          });
         return view('/checklists/view', compact('checklist','actividades', 'maquinas', 'funcionarios', 'respostas'));
-       // return view('/checklists/view', compact('checklist','actividades', 'maquinas', 'funcionarios', 'perguntas'));
     }
+
+    public function actualizar_view($id){
+
+        //
+        $actividades = Actividade::all();
+        $maquinas = Maquina::all();
+        $funcionarios = Funcionario::all();
+       
+        $checklist = CheckList :: find($id);
+        $perguntas = Pergunta::all();
+
+         $respostas = Resposta::where('checklist_id', $checklist->id)->get();
+         $perguntas = $respostas->map(function ($resposta) {
+             return $resposta->pergunta;
+         });
+        return view('/checklists/edit', compact('checklist','actividades', 'maquinas', 'funcionarios', 'respostas'));
+    }
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -195,50 +212,26 @@ class CheckListController extends Controller
         $perguntas = Pergunta::all();
         $checklist = CheckList :: find($id);
 
-        return view('checklists.edit_preenchimento', compact('actividades', 'maquinas', 'funcionarios', 'perguntas','checklist'));
-    }
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+        $perguntas = Pergunta::all();
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+         $respostas = Resposta::where('checklist_id', $checklist->id)->get();
+         $perguntas = $respostas->map(function ($resposta) {
+             return $resposta->pergunta;
+         });
+        return view('/checklists/edit_preenchimento', compact('checklist','actividades', 'maquinas', 'funcionarios', 'respostas','checklist'));
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request, $id)
     {
         //
+        $checklist = CheckList :: find($id);
+        $checklist->nome = $request->input('nome');
+        $checklist->descricao = $request->input('descricao');
+        $checklist->funcionario_id = $request->input('funcionario');
+        $checklist->save();
+        return redirect()->route('checklists.index')->with('mensagem', 'CheckList actualizadp com sucesso!');
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+    
 }

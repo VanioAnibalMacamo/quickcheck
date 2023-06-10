@@ -15,7 +15,7 @@
         <div class="alert alert-danger">{{ session('successDelete') }}</div>
     @endif
 
-    <form action="#" method="POST" enctype="multipart/form-data">
+    <form method="POST" action="{{url('updateChecklist',$checklist->id)}}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
@@ -32,7 +32,7 @@
         <div class="form-row" style="margin-top: 20px; margin-left: 10px; margin-right: 10px;">
             <div class="form-group col-md-4">
                 <label for="inputEmail4">Atividade</label>
-                <select id="actividadeInput" class="form-control" name='actividade' required>
+                <select id="actividadeInput" class="form-control" name='actividade' disabled required>
                     <option value="" selected>Selecione...</option>
                     @foreach ($actividades as $actividade)
                         <option value="{{ $actividade->id }}" {{ $checklist->actividade_id == $actividade->id ? 'selected' : '' }}>{{ $actividade->nome }}</option>
@@ -41,7 +41,7 @@
             </div>
             <div class="form-group col-md-4">
                 <label for="inputEmail4">Máquina</label>
-                <select id="maquinaInput" class="form-control" name="maquina" required>
+                <select id="maquinaInput" class="form-control" name="maquina" disabled required>
                     <option value="" selected>Selecione...</option>
                     @foreach ($maquinas as $maquina)
                         <option value="{{ $maquina->id }}" {{ $checklist->maquina_id == $maquina->id ? 'selected' : '' }}>{{ $maquina->nome }}</option>
@@ -60,15 +60,48 @@
         </div>
 
         <div class="card-footer text-center">
-            <input type="submit" class="btn btn-primary" value='Submeter'>
+            <input type="submit" class="btn btn-primary" value='Actualizar'>
+        </div>
+    </form>
+    <div class="card" style="margin-top: 20px; margin-left: 10px; margin-right: 10px;">
+                <!-- /.card-header -->
+                <div class="card-body p-0">
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th style="width: 10px">#</th>
+                            <th>Pergunta</th>
+                            <th>Resposta</th>
+                            <th>Comentario</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                    @foreach ($respostas as $resposta)
+                        <tr>
+                            <td>{{ $loop->index + 1 }}</td>
+                            <td>{{ $resposta->pergunta->descricao }}</td>
+                            <td>
+                                <input type="text" class="form-control" name="respostas[{{ $resposta->pergunta->id }}]" value="{{ $resposta->nome == 'Sim' ? 'Sim' : 'Não' }}" disabled>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" name="respostas_descricao[{{ $resposta->pergunta->id }}]" placeholder="Sem Comentários" value="{{ $resposta->descricao }}" disabled>
+                            </td>
+                        </tr>
+                    @endforeach
+                </table>
+                </div>
+            </div>
+
+        <div class="card-footer text-center">
             <a href="{{ url('/checkListIndex') }}" type="button" class="btn btn-warning">Voltar</a>
         </div>
     </form>
 </div>
-@stop
+</div>
 
-@section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
 @stop
 
 @section('js')
