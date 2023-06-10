@@ -70,13 +70,14 @@
 @stop
 
 @section('js')
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script> console.log('Hi!'); </script>
 <script>
     setTimeout(function() {
         document.querySelector('.alert').remove();
     }, 5000);
 </script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     function confirmDelete(event, nome) {
         event.preventDefault(); // Prevenir envio do formulário padrão
