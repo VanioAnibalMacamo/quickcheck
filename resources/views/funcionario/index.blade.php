@@ -121,7 +121,12 @@
                                     @foreach(App\Models\parametrizacao\documento\Tipo::all() as $tipo)
                                     <option value="{{ $tipo->id }}"@if($tipo->id === $funcionario->tipo_id) selected @endif>{{ $tipo->descricao}}</option>
                                     @endforeach
+
+
                                 </select>
+                                
+                    </div>
+                   
                                 </div>
                                 <div class="form-row">
                                   <div class="form-group col-md-10">
@@ -133,8 +138,14 @@
                                       @endforeach
                                   </select>
                               </div>
+                              
                             </div>
                       </form>
+
+                      <div class="card-footer">
+                    
+                    <a  href="{{ url('/funcIndex') }}" type="button" class="btn btn-warning">Voltar</a>
+                </div>
                     </div>
                     <!-- /.card -->
                 </div>

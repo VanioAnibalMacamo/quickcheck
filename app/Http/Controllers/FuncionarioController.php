@@ -59,7 +59,10 @@ class FuncionarioController extends Controller
         $funcionario = Funcionario :: find($id);
         return view('/funcionario/edit', compact('funcionario'));
     }
-   
+    public function visualizar_view($id){
+        $funcionario = Funcionario :: find($id);
+        return view('/funcionario/view', compact('funcionario'));
+       
  
     /**
      * Store a newly created resource in storage.
@@ -67,8 +70,6 @@ class FuncionarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
         //
     }
 

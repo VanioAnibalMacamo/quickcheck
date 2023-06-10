@@ -56,6 +56,7 @@ Route::get('/update_funcionario/{id}',[App\Http\Controllers\FuncionarioControlle
 Route::post('/update/{id}',[App\Http\Controllers\FuncionarioController::class,'update']);
 //MVVM
 Route::delete('/funcionarios/{id}', 'App\Http\Controllers\FuncionarioController@delete')->name('funcionarios.delete');
+Route::get('/visualizar_funcionario/{id}',[App\Http\Controllers\funcionarioController::class,'visualizar_view']);
 
 Route::get('/depIndex', [App\Http\Controllers\DepartamentoController::class, 'index'])->name('depIndex');
 Route::get('/depCreate', [App\Http\Controllers\DepartamentoController::class, 'create'])->name('depCreate');
