@@ -35,7 +35,13 @@ class CheckListController extends Controller
        
         $checklist = CheckList :: find($id);
          $perguntas = Pergunta::all();
-        return view('/checklists/view', compact('checklist','actividades', 'maquinas', 'funcionarios', 'perguntas'));
+
+         $respostas = Resposta::where('checklist_id', $checklist->id)->get();
+         $perguntas = $respostas->map(function ($resposta) {
+             return $resposta->pergunta;
+         });
+        return view('/checklists/view', compact('checklist','actividades', 'maquinas', 'funcionarios', 'respostas'));
+       // return view('/checklists/view', compact('checklist','actividades', 'maquinas', 'funcionarios', 'perguntas'));
     }
     /**
      * Show the form for creating a new resource.
