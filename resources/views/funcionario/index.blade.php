@@ -49,8 +49,9 @@
                       <td>{{ $funcionario->departamento->sigla}}</td>
                       <td> 
                             <!-- Large modal -->
-                            <button type="button" class="btn btn-primary btn-sm d-inline" ><i class="fas fa-eye"></i></button>
+                           
                             <a class="btn btn-info btn-sm d-inline" href="{{url('update_funcionario',$funcionario->id)}}"> <i class="fas fa-pencil-alt"></i></a>
+                            <a  class="btn btn-primary btn-sm d-inline" href="{{url('visualizar_funcionario',$funcionario->id)}}"><i class="fas fa-eye"></i></a>
                             <form id="form-excluir" action="{{ route('funcionarios.delete', ['id' => $funcionario->id]) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')

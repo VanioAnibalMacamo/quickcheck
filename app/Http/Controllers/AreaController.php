@@ -56,7 +56,6 @@ class AreaController extends Controller
     {
         $area = Area::find($id);
         $area->delete();
-       
         return redirect()->route('areaIndex')->with('successDelete', 'Área excluída com sucesso!');
     }
 

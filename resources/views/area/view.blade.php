@@ -31,6 +31,7 @@
                         <label for="inputState">Departamento</label>
                         <select id="inputState" class="form-control" name='departamento' readonly>
                             <option selected>Seleccione...</option>
+                            
                             @foreach(App\Models\Departamento::all() as $departamento)
                                  <option value="{{ $departamento->id }}" @if($departamento->id === $area->departamento_id) selected @endif> {{ $departamento->nome }}</option>
                              @endforeach
