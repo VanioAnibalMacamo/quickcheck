@@ -55,10 +55,7 @@ class FuncionarioController extends Controller
 
         return redirect()->route('funcIndex')->with('mensagem', 'Funcionário Cadastrado com sucesso!');
     }
-    public function update_view($id){
-        $funcionario = Funcionario :: find($id);
-        return view('/funcionario/edit', compact('funcionario'));
-    }
+   
     public function visualizar_view($id){
         $funcionario = Funcionario :: find($id);
         return view('/funcionario/view', compact('funcionario'));
@@ -71,6 +68,11 @@ class FuncionarioController extends Controller
      * @return \Illuminate\Http\Response
      */
         //
+    }
+    public function update_view($id){
+        
+        $funcionario = Funcionario :: find($id);
+        return view('/funcionario/edit', compact('funcionario'));
     }
 
     /**

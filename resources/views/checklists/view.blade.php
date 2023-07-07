@@ -90,6 +90,7 @@
 
         <div class="card-footer text-center">
             <a href="{{ url('/checkListIndex') }}" type="button" class="btn btn-warning">Voltar</a>
+            <a href="{{ url('/checkListIndex') }}" type="button" class="btn btn-warning">Download</a>
         </div>
     </form>
 </div>
