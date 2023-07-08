@@ -44,11 +44,11 @@
                             <!-- Large modal -->
                             <a  class="btn btn-primary btn-sm d-inline" href="{{url('visualizar_tipoActividade',$tipoActividade->id)}}"><i class="fas fa-eye"></i></a>
                             <a class="btn btn-info btn-sm d-inline"  href="{{url('update_tipoActividade',$tipoActividade->id)}}"> <i class="fas fa-pencil-alt"></i></a>
-                            <form id="form-excluir" action="{{ route('tipoActividades.delete', ['id' => $tipoActividade->id]) }}" method="POST" class="d-inline">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm" onclick="confirmDelete(event, '{{ $tipoActividade->nome }}')"><i class="fas fa-trash"></i></button>
-                             </form>
+                            <form id="form-excluir-{{ $tipoActividade->id }}" action="{{ route('tipoActividades.delete', ['id' => $tipoActividade->id]) }}" method="POST" class="d-inline">
+                              @csrf
+                              @method('DELETE')
+                              <button type="submit" class="btn btn-danger btn-sm" onclick="confirmDelete(event, '{{ $tipoActividade->nome }}', {{ $tipoActividade->id }})"><i class="fas fa-trash"></i></button>
+                          </form>
                       </td>
                      
                     
@@ -78,11 +78,11 @@
 </script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-    function confirmDelete(event, nome) {
+    function confirmDelete(event, nome, formId) {
         event.preventDefault(); // Prevenir envio do formulário padrão
         
         Swal.fire({
-            title: 'Tem certeza que deseja excluir o Tipo de Actividade '+nome+'?',
+            title: 'Tem certeza que deseja excluir o Tipo de Atividade ' + nome + '?',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#d33',
@@ -91,7 +91,7 @@
             cancelButtonText: 'Cancelar'
         }).then((result) => {
             if (result.isConfirmed) {
-                document.getElementById('form-excluir').submit(); // Enviar formulário após confirmação
+                document.getElementById('form-excluir-' + formId).submit(); // Enviar formulário específico após confirmação
             }
         });
     }

@@ -51,11 +51,11 @@
                            
                             <a  class="btn btn-primary btn-sm d-inline" href="{{url('visualizar_maquina',$maquina->id)}}"><i class="fas fa-eye"></i></a>
                             <a class="btn btn-info btn-sm d-inline"  href="{{url('update_maquina',$maquina->id)}}"> <i class="fas fa-pencil-alt"></i></a>
-                            <form id="form-excluir" action="{{ route('maquina.delete', ['id' => $maquina->id]) }}" method="POST" class="d-inline">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm" onclick="confirmDelete(event, '{{ $maquina->nome }}')"><i class="fas fa-trash"></i></button>
-                           </form>
+                            <form id="form-excluir-{{ $maquina->id }}" action="{{ route('maquina.delete', ['id' => $maquina->id]) }}" method="POST" class="d-inline">
+                              @csrf
+                              @method('DELETE')
+                              <button type="submit" class="btn btn-danger btn-sm" onclick="confirmDelete(event, '{{ $maquina->nome }}', {{ $maquina->id }})"><i class="fas fa-trash"></i></button>
+                          </form>
                       </td>
                      
                     
@@ -81,11 +81,11 @@
 </script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-    function confirmDelete(event, nome) {
+    function confirmDelete(event, nome, formId) {
         event.preventDefault(); // Prevenir envio do formulário padrão
         
         Swal.fire({
-            title: 'Tem certeza que deseja excluir a máquina '+nome+'?',
+            title: 'Tem certeza que deseja excluir a Máquina ' + nome + '?',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#d33',
@@ -94,7 +94,7 @@
             cancelButtonText: 'Cancelar'
         }).then((result) => {
             if (result.isConfirmed) {
-                document.getElementById('form-excluir').submit(); // Enviar formulário após confirmação
+                document.getElementById('form-excluir-' + formId).submit(); // Enviar formulário específico após confirmação
             }
         });
     }
