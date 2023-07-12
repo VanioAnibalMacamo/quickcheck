@@ -32,7 +32,7 @@ class CheckListController extends Controller
         $actividades = Actividade::all();
         $maquinas = Maquina::all();
         $funcionarios = Funcionario::all();
-       
+
         $checklist = CheckList :: find($id);
          $perguntas = Pergunta::all();
 
@@ -49,7 +49,7 @@ class CheckListController extends Controller
         $actividades = Actividade::all();
         $maquinas = Maquina::all();
         $funcionarios = Funcionario::all();
-       
+
         $checklist = CheckList :: find($id);
         $perguntas = Pergunta::all();
 
@@ -59,7 +59,7 @@ class CheckListController extends Controller
          });
         return view('/checklists/edit', compact('checklist','actividades', 'maquinas', 'funcionarios', 'respostas'));
     }
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -70,16 +70,16 @@ class CheckListController extends Controller
         $actividades = Actividade::all();
         $maquinas = Maquina::all();
         $funcionarios = Funcionario::all();
-        
+
         $dadosRecebidos = session()->all();
         $actividade = Actividade::find($dadosRecebidos['actividade']);
-        
+
         if ($actividade) {
             $tipoActividade = TipoActividade::findOrFail($actividade->tipo_actividade_id);
              $tipoActividadeId = $tipoActividade->id;
 
             $maquinaId = $dadosRecebidos['maquina'];
-         
+
             $perguntas = Pergunta::whereHas('tipoActividades', function ($query) use ($tipoActividadeId) {
                 $query->where('tipo_actividade_id', $tipoActividadeId);
             })->whereHas('maquinas', function ($query) use ($maquinaId) {
@@ -97,15 +97,15 @@ class CheckListController extends Controller
                           });
                 });
             })->get();
-            
+
 
             return view('checklists.create', compact('maquinas', 'funcionarios', 'perguntas', 'actividades', 'dadosRecebidos'));
         } else {
-           
+
         }
 
     }
-    
+
     public function preencher(Request $request)
     {
         $nome = $request->input('nome');
@@ -113,7 +113,7 @@ class CheckListController extends Controller
         $actividade = $request->input('actividade');
         $maquina = $request->input('maquina');
         $funcionario = $request->input('funcionario');
-        
+
         $dados = [
             'nome' => $nome,
             'descricao' => $descricao,
@@ -121,7 +121,7 @@ class CheckListController extends Controller
             'maquina' => $maquina,
             'funcionario' => $funcionario
         ];
-    
+
         return redirect()->route('checklists.create')->with($dados);
     }
     /**
@@ -175,7 +175,7 @@ class CheckListController extends Controller
 
         return view('checklists.preenchimento', compact('actividades', 'maquinas', 'funcionarios', 'perguntas'));
     }
-   
+
 
 
 
@@ -205,7 +205,7 @@ class CheckListController extends Controller
         return redirect('preenchimento')->with('mensagem', 'Checklist salvo com sucesso!');
     }
     public function update_preenchimento_view($id){
-      
+
         $actividades = Actividade::all();
         $maquinas = Maquina::all();
         $funcionarios = Funcionario::all();
@@ -220,7 +220,7 @@ class CheckListController extends Controller
          });
         return view('/checklists/edit_preenchimento', compact('checklist','actividades', 'maquinas', 'funcionarios', 'respostas','checklist'));
     }
-    
+
     public function update(Request $request, $id)
     {
         //
@@ -229,7 +229,7 @@ class CheckListController extends Controller
         $checklist->descricao = $request->input('descricao');
         $checklist->funcionario_id = $request->input('funcionario');
         $checklist->save();
-        return redirect()->route('checklists.index')->with('mensagem', 'CheckList actualizadp com sucesso!');
+        return redirect()->route('checklists.index')->with('mensagem', 'CheckList actualizado com sucesso!');
 
     }
     public function delete($id)
@@ -240,9 +240,9 @@ class CheckListController extends Controller
         $checklist->delete();
 
         $respostas = Resposta::where('checklist_id', $checklist->id)->get();
-       
+
         return redirect()->route('checklists.index')->with('successDelete', 'Checklist Excluido com Sucesso!');
     }
 
-    
+
 }

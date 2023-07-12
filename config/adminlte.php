@@ -319,6 +319,11 @@ return [
             //'can'  => 'is_actived','is_admin','is_corporate',
         ],
         [
+            'text' => 'Relátorios',
+            'url'  => 'dashboar',
+            'icon' => 'fas fa-exclamation-triangle',
+        ],
+        [
             'text' => 'Users',
             'url'  => 'userIndex',
             'icon' => 'fas fa-regular fa-users',
@@ -326,64 +331,64 @@ return [
         [
             'text' => 'Funcionários',
             'url'  => 'funcIndex',
-            'icon' => 'fas fa-user-tie',   
+            'icon' => 'fas fa-user-tie',
         ],
         [
             'text' => 'Departamentos',
             'url'  => 'depIndex',
-            'icon' => 'fas fa-sitemap',   
+            'icon' => 'fas fa-sitemap',
         ],
         [
             'text' => 'Áreas',
             'url'  => 'areaIndex',
-            'icon' => 'fas fa-industry',   
+            'icon' => 'fas fa-industry',
         ],
         [
             'text' => 'Máquinas',
             'url'  => 'maquinaIndex',
-            'icon' => 'fas fa-wrench',   
+            'icon' => 'fas fa-wrench',
         ],
         [
             'text' => 'Actividades',
             'url'  => 'actividadeIndex',
-            'icon' => 'fas fa-book-open',   
+            'icon' => 'fas fa-book-open',
         ],
         [
             'text' => 'Perguntas',
             'url'  => 'perguntaIndex',
-            'icon' => ' fas fa-question-circle',   
+            'icon' => ' fas fa-question-circle',
         ],
         [
             'text'    => 'Check List',
             'icon'    => 'fas fa-list',
-           
+
             'submenu' => [
                 [
                     'text'    => 'Gerir Check Lists',
                     'url'     => 'checkListIndex',
                    // 'url'     => 'checklists',
                     //'icon' => 'fas fa-id-card',
-                    
+
                 ],
                 [
                     'text'    => 'Alocação para Máquinas',
                     'url'     => 'maquina_perguntaIndex',
                     //'icon' => 'fas fa-id-card',
-                    
+
                 ],
                 [
                     'text'    => 'Alocação para Tipo Actividades',
                     'url'     => 'tipo_actividade_perguntaIndex',
                     //'icon' => 'fas fa-id-card',
-                    
+
                 ],
             ],
-           
+
         ],
         [
             'text'    => 'Parametrização',
             'icon'    => 'fas fa-cog',
-           
+
             'submenu' => [
                 [
                     'text'    => 'Documentos',
@@ -393,7 +398,7 @@ return [
                         [
                             'text' => 'Tipo Documento',
                             'url'  => '#',
-                            
+
                         ],
                         [
                             'text'    => 'level_two',
@@ -414,11 +419,11 @@ return [
                 [
                     'text' => 'Tipo de Actividades',
                     'url'  => 'tipoActividadeIndex',
-                    'icon' => 'fas fa-book-open', 
+                    'icon' => 'fas fa-book-open',
                 ],
             ],
         ],
-       
+
         /*
         ['header' => 'labels'],
         [

@@ -33,7 +33,6 @@
                             </div>
                     </div>
 
-
                     <div class="form-group">
                         <label for="prioridade">Prioridade</label>
                         <div>
@@ -57,10 +56,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
-
 
                     <div class="form-group">
                         <label for="inputAddress">Descrição (Pergunta)</label>
