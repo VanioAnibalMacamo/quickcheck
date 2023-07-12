@@ -13,7 +13,7 @@
 @stop
 
 @section('content')
-  
+
 
 <div class="d-flex flex-row-reverse align-items-end mb-3">
   <a href="{{ url('perguntaCreate') }}"  class="btn btn-primary">
@@ -22,16 +22,17 @@
 </div>
 
 <div class="card">
-            
+
 
               <!-- /.card-header -->
               <div class="card-body p-0">
                 <table class="table table-striped">
                   <thead>
                     <tr>
-                      <th style="width: 10%">#</th>
+                      <th style="width: 5%">#</th>
                       <th style="width: 50%">Descrição</th>
-                      <th style="width: 30%">Finalidade</th>
+                      <th style="width: 15%">Finalidade</th>
+                      <th style="width: 15%">Prioridade</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -40,7 +41,14 @@
                       <td>{{ $loop->index + 1 }}</td>
                       <td>{{ $pergunta->descricao}}</td>
                       <td>{{ $pergunta->finalidade}}</td>
-                      <td> 
+                      <td>
+                        <span class="badge @if($pergunta->prioridade === 'baixa') bg-primary @elseif($pergunta->prioridade === 'media') bg-warning @elseif($pergunta->prioridade === 'alta') bg-danger @endif">
+                            {{ $pergunta->prioridade }}
+                        </span>
+                    </td>
+
+                      <td></td>
+                      <td>
                             <!-- Large modal -->
                             <a  class="btn btn-primary btn-sm d-inline" href="{{url('visualizar_pergunta',$pergunta->id)}}"><i class="fas fa-eye"></i></a>
                             <a class="btn btn-info btn-sm d-inline"  href="{{url('update_pergunta',$pergunta->id)}}"> <i class="fas fa-pencil-alt"></i></a>
@@ -50,8 +58,8 @@
                                 <button type="submit" class="btn btn-danger btn-sm" onclick="confirmDelete(event, '{{ $pergunta->nome }}', {{ $pergunta->id }})"><i class="fas fa-trash"></i></button>
                             </form>
                       </td>
-                     
-                    
+
+
                     </tr>
                    @endforeach
                   </tbody>
@@ -61,7 +69,7 @@
             </div>
 
 
-            
+
 
 @stop
 
@@ -80,7 +88,7 @@
 <script>
     function confirmDelete(event, nome, formId) {
         event.preventDefault(); // Prevenir envio do formulário padrão
-        
+
         Swal.fire({
             title: 'Tem certeza que deseja excluir a Pergunta ' + nome + '?',
             icon: 'warning',

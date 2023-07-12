@@ -4,7 +4,7 @@
 
 @section('content_header')
     <h1>Actualizar Pergunta</h1>
-      
+
 @stop
 
 @section('content')
@@ -32,10 +32,36 @@
 
                             </div>
                         </div>
+
+                        <div class="form-group">
+                            <label for="prioridade">Prioridade</label>
+                            <div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="prioridade" id="radioBaixa" value="baixa" @if($pergunta->prioridade == 'baixa') checked @endif>
+                                    <label class="form-check-label" for="radioBaixa">
+                                        <span class="badge bg-primary">Baixa</span>
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="prioridade" id="radioMedia" value="media" @if($pergunta->prioridade == 'media') checked @endif>
+                                    <label class="form-check-label" for="radioMedia">
+                                        <span class="badge bg-warning text-dark">Média</span>
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="prioridade" id="radioAlta" value="alta" @if($pergunta->prioridade == 'alta') checked @endif>
+                                    <label class="form-check-label" for="radioAlta">
+                                        <span class="badge bg-danger">Alta</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+
                         <label for="inputAddress">Descrição (Pergunta)</label>
                         <input type="text" class="form-control" id="nome" name='descricao' value="{{ $pergunta->descricao }}"  placeholder="Digite a pergunta...">
-                    </div>               
-                   
+                    </div>
+
                     <div class="card-footer">
                         <input type="submit" class="btn btn-primary" value='Actualizar'>
                         <a  href="{{ url('/perguntaIndex') }}" type="button" class="btn btn-warning">Cancelar</a>

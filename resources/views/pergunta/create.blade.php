@@ -4,7 +4,7 @@
 
 @section('content_header')
     <h1> Cadastrar Pergunta</h1>
-      
+
 @stop
 
 @section('content')
@@ -17,33 +17,63 @@
               <!-- form start -->
               <form action="{{url('savePergunta')}}" method="POST" enctype="multipart/form-data">
                 @csrf
-                
+
                 <div class="card-body">
-                <div class="form-group">
-                    <label for="finalidade">Finalidade</label>
+                    <div class="form-group">
+                        <label for="finalidade">Finalidade</label>
+                            <div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="finalidade" id="radioMaquina" value="maquina">
+                                    <label class="form-check-label" for="radioMaquina">Máquina</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="finalidade" id="radioAtividade" value="actividade">
+                                    <label class="form-check-label" for="radioAtividade">Tipo de Atividade</label>
+                                </div>
+                            </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="prioridade">Prioridade</label>
                         <div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="finalidade" id="radioMaquina" value="maquina">
-                                <label class="form-check-label" for="radioMaquina">Máquina</label>
+                                <input class="form-check-input" type="radio" name="prioridade" id="radioBaixa" value="baixa">
+                                <label class="form-check-label" for="radioBaixa">
+                                    <span class="badge bg-primary">Baixa</span>
+                                </label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="finalidade" id="radioAtividade" value="actividade">
-                                <label class="form-check-label" for="radioAtividade">Tipo de Atividade</label>
+                                <input class="form-check-input" type="radio" name="prioridade" id="radioMedia" value="media">
+                                <label class="form-check-label" for="radioMedia">
+                                    <span class="badge bg-warning text-dark">Média</span>
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="prioridade" id="radioAlta" value="alta">
+                                <label class="form-check-label" for="radioAlta">
+                                    <span class="badge bg-danger">Alta</span>
+                                </label>
                             </div>
                         </div>
                     </div>
+
+
+
+
+
                     <div class="form-group">
                         <label for="inputAddress">Descrição (Pergunta)</label>
                         <input type="text" class="form-control" id="nome" name='descricao' placeholder="Digite a pergunta...">
-                    </div>               
-                   
+                    </div>
+
                     <div class="card-footer">
                         <input type="submit" class="btn btn-primary" value='Salvar'>
                         <a  href="{{ url('/perguntaIndex') }}" type="button" class="btn btn-warning">Cancelar</a>
                     </div>
                 </div>
               </form>
-        
+
             <!-- /.card -->
 
 @stop

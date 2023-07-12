@@ -9,7 +9,8 @@ class Pergunta extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['descricao','finalidade'];
+    protected $fillable = ['descricao', 'finalidade', 'prioridade'];
+
 
     public function maquinas()
     {

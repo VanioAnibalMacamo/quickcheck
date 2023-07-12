@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 
 class PerguntaController extends Controller
 {
-    
-     
+
+
     public function index()
     {
         $perguntas = Pergunta::paginate(8);
@@ -21,9 +21,10 @@ class PerguntaController extends Controller
 
     public function savePergunta(Request $request){
         $pergunta = new Pergunta();
-       
+
         $pergunta->descricao  = $request->descricao;
         $pergunta->finalidade = $request->input('finalidade');
+        $pergunta->prioridade = $request->input('prioridade');
 
         $pergunta->save();
         return redirect()->route('perguntaIndex')->with('mensagem', 'Pergunta Cadastrada com sucesso!');
@@ -35,13 +36,14 @@ class PerguntaController extends Controller
     }
 
     public function update(Request $request, $id){
-       
+
         $pergunta = Pergunta :: find($id);
         $pergunta->descricao  =$request->descricao;
         $pergunta->finalidade = $request->input('finalidade');
+        $pergunta->prioridade = $request->input('prioridade');
 
         $pergunta->save();
-        return redirect()->route('perguntaIndex')->with('mensagem', 'Pergunta Actualizada com sucesso!'); 
+        return redirect()->route('perguntaIndex')->with('mensagem', 'Pergunta Actualizada com sucesso!');
     }
 
     public function visualizar_view($id){
@@ -53,7 +55,7 @@ class PerguntaController extends Controller
     {
         $pergunta = Pergunta::find($id);
         $pergunta->delete();
-       
+
         return redirect()->route('perguntaIndex')->with('successDelete', 'Pergunta excluída com sucesso!');
     }
 
