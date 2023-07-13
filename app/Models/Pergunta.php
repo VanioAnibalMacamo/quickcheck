@@ -9,8 +9,7 @@ class Pergunta extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['descricao', 'finalidade', 'prioridade'];
-
+    protected $fillable = ['descricao', 'finalidade', 'prioridade', 'resposta_optima'];
 
     public function maquinas()
     {

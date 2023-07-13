@@ -30,9 +30,10 @@
                   <thead>
                     <tr>
                       <th style="width: 5%">#</th>
-                      <th style="width: 50%">Descrição</th>
-                      <th style="width: 15%">Finalidade</th>
-                      <th style="width: 15%">Prioridade</th>
+                      <th style="width: 45%">Descrição</th>
+                      <th style="width: 10%">Finalidade</th>
+                      <th style="width: 15%">Resposta Óptima</th>
+                      <th style="width: 10%">Prioridade</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -41,6 +42,7 @@
                       <td>{{ $loop->index + 1 }}</td>
                       <td>{{ $pergunta->descricao}}</td>
                       <td>{{ $pergunta->finalidade}}</td>
+                      <td>{{ $pergunta->resposta_optima}}</td>
                       <td>
                         <span class="badge @if($pergunta->prioridade === 'baixa') bg-primary @elseif($pergunta->prioridade === 'media') bg-warning @elseif($pergunta->prioridade === 'alta') bg-danger @endif">
                             {{ $pergunta->prioridade }}

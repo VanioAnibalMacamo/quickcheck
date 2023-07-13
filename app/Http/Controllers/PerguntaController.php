@@ -25,6 +25,7 @@ class PerguntaController extends Controller
         $pergunta->descricao  = $request->descricao;
         $pergunta->finalidade = $request->input('finalidade');
         $pergunta->prioridade = $request->input('prioridade');
+        $pergunta->prioridade = $request->input('resposta_optima');
 
         $pergunta->save();
         return redirect()->route('perguntaIndex')->with('mensagem', 'Pergunta Cadastrada com sucesso!');
@@ -41,6 +42,7 @@ class PerguntaController extends Controller
         $pergunta->descricao  =$request->descricao;
         $pergunta->finalidade = $request->input('finalidade');
         $pergunta->prioridade = $request->input('prioridade');
+        $pergunta->resposta_optima = $request->input('resposta_optima');
 
         $pergunta->save();
         return redirect()->route('perguntaIndex')->with('mensagem', 'Pergunta Actualizada com sucesso!');

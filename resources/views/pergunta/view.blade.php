@@ -58,6 +58,22 @@
 
                         <label for="inputAddress">Descrição (Pergunta)</label>
                         <input type="text" class="form-control" id="nome" name='descricao' value="{{ $pergunta->descricao }}" placeholder="Digite a pergunta..." readOnly>
+
+
+                        <div class="form-group">
+                            <label for="resposta_optima">Resposta Óptima</label>
+                            <div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="resposta_optima" id="radioSim" value="sim" @if($pergunta->resposta_optima == 'sim') checked @endif disabled>
+                                    <label class="form-check-label" for="radioSim">Sim</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="resposta_optima" id="radioNao" value="nao" @if($pergunta->resposta_optima == 'nao') checked @endif disabled>
+                                    <label class="form-check-label" for="radioNao">Não</label>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
                     <div class="card-footer">
