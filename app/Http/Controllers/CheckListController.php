@@ -192,7 +192,8 @@ class CheckListController extends Controller
             $respostaChecklist->nome = $resposta;
 
             $pergunta = Pergunta::find($pergunta_id);
-            if(($pergunta->resposta_optima === $resposta) && ($pergunta->prioridade === 'alta')){
+
+            if(($pergunta->resposta_optima === strtolower($resposta)) && ($pergunta->prioridade === 'alta')){
                 $verificador = true;
                 break;
             }
