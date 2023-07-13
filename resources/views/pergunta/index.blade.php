@@ -41,11 +41,11 @@
                     <tr>
                       <td>{{ $loop->index + 1 }}</td>
                       <td>{{ $pergunta->descricao}}</td>
-                      <td>{{ $pergunta->finalidade}}</td>
-                      <td>{{ $pergunta->resposta_optima}}</td>
+                      <td>{{ ucfirst($pergunta->finalidade) }}</td>
+                      <td>{{ ucfirst($pergunta->resposta_optima)}}</td>
                       <td>
                         <span class="badge @if($pergunta->prioridade === 'baixa') bg-primary @elseif($pergunta->prioridade === 'media') bg-warning @elseif($pergunta->prioridade === 'alta') bg-danger @endif">
-                            {{ $pergunta->prioridade }}
+                            {{ ucfirst($pergunta->prioridade) }}
                         </span>
                     </td>
 
