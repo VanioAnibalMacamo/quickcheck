@@ -23,7 +23,7 @@ class CheckListController extends Controller
     public function index()
     {
         //
-        $checklists = CheckList::orderBy('id', 'desc')->paginate(8);
+        $checklists = CheckList::orderBy('id', 'desc')->paginate(15);
         return view('checklists.index',['checklists' => $checklists]);
     }
     public function visualizar_view($id){
@@ -198,23 +198,35 @@ class CheckListController extends Controller
                 break;
             }
         }
+
        if($verificador){
+            $checklist->status = 'Concluido';
             $checklist->save();
 
-            foreach ($request->input('perguntas') as $pergunta_id => $resposta) {
-                $respostaChecklist = new Resposta();
-                $respostaChecklist->nome = $resposta;
-                $respostaChecklist->descricao = $request->input('perguntas_descricao')[$pergunta_id];
-                $respostaChecklist->checklist_id = $checklist->id;
-                $respostaChecklist->pergunta_id = $pergunta_id;
-                $respostaChecklist->save();
-            }
-            return redirect('preenchimento')->with('mensagem', 'Checklist salvo com sucesso!');
+          //  return redirect('preenchimento')->with('mensagem', 'Checklist salvo com sucesso!');
         }else {
+            $checklist->status = 'Pendente';
+            $checklist->save();
+            //return redirect('preenchimento')->with('erro', 'Não é possível realizar o checklist, Por Questões de Segurança!');
+        }
+
+        foreach ($request->input('perguntas') as $pergunta_id => $resposta) {
+            $respostaChecklist = new Resposta();
+            $respostaChecklist->nome = $resposta;
+            $respostaChecklist->descricao = $request->input('perguntas_descricao')[$pergunta_id];
+            $respostaChecklist->checklist_id = $checklist->id;
+            $respostaChecklist->pergunta_id = $pergunta_id;
+            $respostaChecklist->save();
+        }
+
+        if($verificador){
+            return redirect('preenchimento')->with('mensagem', 'Checklist salvo com sucesso!');
+        }else{
             return redirect('preenchimento')->with('erro', 'Não é possível realizar o checklist, Por Questões de Segurança!');
         }
 
     }
+
 
     public function update_preenchimento_view($id){
 

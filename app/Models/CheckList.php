@@ -10,8 +10,8 @@ class CheckList extends Model
     use HasFactory;
 
     protected $table = 'checklists';
-    protected $fillable = ['nome', 'descricao', 'data'];
-    
+    protected $fillable = ['nome', 'descricao', 'data','status'];
+
     public function funcionario()
     {
         return $this->belongsTo(Funcionario::class);

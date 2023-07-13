@@ -19,7 +19,7 @@
   </a>
 </div>
 <div class="card">
-            
+
 
           <!-- /.card-header -->
 <div class="card-body p-0">
@@ -31,21 +31,33 @@
                 <th>Funcionario</th>
                 <th>Actividade</th>
                 <th>Máquina</th>
+                <th>Status</th>
                 <th>Data</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($checklists as $checklist)
                 <tr>
-                    <td>{{ $checklist->id }}</td>
+                    <td>{{ $loop->index + 1 }}</td>
                     <td>{{ $checklist->nome }}</td>
                     <td>{{ $checklist->funcionario->nome }}</td>
                     <td>{{ $checklist->actividade->nome }}</td>
                     <td>{{ $checklist->maquina->nome }}</td>
+                    <td>
+                        @if($checklist->status === 'Concluido')
+                            <span class="badge bg-warning text-dark">
+                                {{ $checklist->status }}
+                            </span>
+                        @elseif ($checklist->status === 'Pendente')
+                        <span class="badge bg-danger">
+                            {{ $checklist->status }}
+                        </span>
+                        @endif
+                    </td>
                     <td>{{ $checklist->data }}</td>
-                    <td> 
+                    <td>
                          <!-- Large modal -->
-                        <a  class="btn btn-primary btn-sm d-inline" href="{{url('visualizar_checklist',$checklist->id)}}"><i class="fas fa-eye"></i></a> 
+                        <a  class="btn btn-primary btn-sm d-inline" href="{{url('visualizar_checklist',$checklist->id)}}"><i class="fas fa-eye"></i></a>
                         <a class="btn btn-info btn-sm d-inline"  href="{{url('update_preenchimento_checklist',$checklist->id)}}"> <i class="fas fa-pencil-alt"></i></a>
                         <form id="form-excluir" action="{{ route('checklists.delete', ['id' => $checklist->id]) }}" method="POST" class="d-inline">
                             @csrf
@@ -53,7 +65,7 @@
                             <button type="submit" class="btn btn-danger btn-sm" onclick="confirmDelete(event, '{{ $checklist->nome }}')"><i class="fas fa-trash"></i></button>
                         </form>
                     </td>
-                     
+
                 </tr>
             @endforeach
         </tbody>
@@ -62,7 +74,7 @@
 </div>
 
 
-            
+
 @stop
 
 @section('css')
@@ -81,7 +93,7 @@
 <script>
     function confirmDelete(event, nome) {
         event.preventDefault(); // Prevenir envio do formulário padrão
-        
+
         Swal.fire({
             title: 'Tem certeza que deseja excluir o Checklist '+nome+'?',
             icon: 'warning',
