@@ -176,9 +176,6 @@ class CheckListController extends Controller
         return view('checklists.preenchimento', compact('actividades', 'maquinas', 'funcionarios', 'perguntas'));
     }
 
-
-
-
     public function saveCheckList (Request $request)
     {
         // Crie um novo Checklist com os dados recebidos
@@ -189,21 +186,38 @@ class CheckListController extends Controller
         $checklist->funcionario_id = $request->input('funcionario');
         $checklist->actividade_id = $request->input('actividade');
         $checklist->maquina_id = $request->input('maquina');
-        $checklist->save();
+        //$checklist->save();
 
-        // Salve as respostas para cada pergunta
+        $verificador = false;
         foreach ($request->input('perguntas') as $pergunta_id => $resposta) {
             $respostaChecklist = new Resposta();
             $respostaChecklist->nome = $resposta;
-            $respostaChecklist->descricao = $request->input('perguntas_descricao')[$pergunta_id];
-            $respostaChecklist->checklist_id = $checklist->id;
-            $respostaChecklist->pergunta_id = $pergunta_id;
-            $respostaChecklist->save();
+
+            $pergunta = Pergunta::find($pergunta_id);
+            if($resposta === 'nao' && $pergunta->prioridade === 'alta'){
+                $verificador = true;
+                break;
+            }
+        }
+        if($verificador){
+            $checklist->save();
+
+             // Salve as respostas para cada pergunta
+            foreach ($request->input('perguntas') as $pergunta_id => $resposta) {
+                $respostaChecklist = new Resposta();
+                $respostaChecklist->nome = $resposta;
+                $respostaChecklist->descricao = $request->input('perguntas_descricao')[$pergunta_id];
+                $respostaChecklist->checklist_id = $checklist->id;
+                $respostaChecklist->pergunta_id = $pergunta_id;
+                $respostaChecklist->save();
+            }
+            return redirect('preenchimento')->with('mensagem', 'Checklist salvo com sucesso!');
+        }else {
+            return redirect('preenchimento')->with('erro', 'Não é possível realizar o checklist, Por Questões de Segurança!');
         }
 
-        // Redirecione para a página desejada ou retorne uma resposta JSON
-        return redirect('preenchimento')->with('mensagem', 'Checklist salvo com sucesso!');
     }
+
     public function update_preenchimento_view($id){
 
         $actividades = Actividade::all();

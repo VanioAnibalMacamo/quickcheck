@@ -4,7 +4,7 @@
 
 @section('content_header')
     <h1>CheckList</h1>
-      
+
 @stop
 
 @section('content')
@@ -14,6 +14,9 @@
       @endif
       @if (session('successDelete'))
           <div class="alert alert-danger">{{ session('successDelete') }}</div>
+      @endif
+      @if (session('erro'))
+          <div class="alert alert-danger">{{ session('erro') }}</div>
       @endif
 <form action="{{url('preencher')}}" method="POST" enctype="multipart/form-data">
     @csrf
@@ -77,6 +80,6 @@
           document.querySelector('.alert').remove();
       }, 5000);
 </script>
-    
+
 
 @stop

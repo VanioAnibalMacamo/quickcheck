@@ -320,7 +320,7 @@ return [
         ],
         [
             'text' => 'Relátorios',
-            'url'  => 'dashboar',
+            'url'  => 'relatorio',
             'icon' => 'fas fa-exclamation-triangle',
         ],
         [
