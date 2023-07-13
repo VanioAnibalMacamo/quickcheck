@@ -178,15 +178,13 @@ class CheckListController extends Controller
 
     public function saveCheckList (Request $request)
     {
-        // Crie um novo Checklist com os dados recebidos
         $checklist = new Checklist();
         $checklist->nome = $request->input('nome');
         $checklist->descricao = $request->input('descricao');
-        $checklist->data = date('Y-m-d H:i:s'); // Define a data atual
+        $checklist->data = date('Y-m-d H:i:s');
         $checklist->funcionario_id = $request->input('funcionario');
         $checklist->actividade_id = $request->input('actividade');
         $checklist->maquina_id = $request->input('maquina');
-        //$checklist->save();
 
         $verificador = false;
         foreach ($request->input('perguntas') as $pergunta_id => $resposta) {
@@ -194,15 +192,14 @@ class CheckListController extends Controller
             $respostaChecklist->nome = $resposta;
 
             $pergunta = Pergunta::find($pergunta_id);
-            if($resposta === 'nao' && $pergunta->prioridade === 'alta'){
+            if(($pergunta->resposta_optima === $resposta) && ($pergunta->prioridade === 'alta')){
                 $verificador = true;
                 break;
             }
         }
-        if($verificador){
+       if($verificador){
             $checklist->save();
 
-             // Salve as respostas para cada pergunta
             foreach ($request->input('perguntas') as $pergunta_id => $resposta) {
                 $respostaChecklist = new Resposta();
                 $respostaChecklist->nome = $resposta;
