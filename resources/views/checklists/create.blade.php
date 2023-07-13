@@ -4,12 +4,12 @@
 
 @section('content_header')
     <h1>CheckList</h1>
-      
+
 @stop
 
 @section('content')
 <div class="card card-primary">
-       
+
     <form action="{{url('saveCheckList')}}" method="POST" enctype="multipart/form-data">
             @csrf
 
@@ -52,10 +52,10 @@
                         </option>
                     @endforeach
                 </select>
-            </div>   
+            </div>
         </div>
 
-            
+
             <div class="card" style="margin-top: 20px; margin-left: 10px; margin-right: 10px;">
                 <!-- /.card-header -->
                 <div class="card-body p-0">
@@ -78,37 +78,39 @@
                         // Variável para armazenar a finalidade atual
                         $finalidadeAtual = null;
                     @endphp
-
                     @foreach ($perguntasOrdenadas as $pergunta)
-                        @if ($pergunta->finalidade != $finalidadeAtual)
-                            <!-- Adicionar uma linha para a nova finalidade -->
-                            <tr>
+                    @if ($pergunta->finalidade != $finalidadeAtual)
+                        <tr>
                             <th colspan="4" class="text-center" style="background-color: #e9ecef; color: #333;">
                                 Perguntas sobre {{ $pergunta->finalidade }}s
                             </th>
-                            </tr>
-                            @php
-                                // Atualizar a finalidade atual
-                                $finalidadeAtual = $pergunta->finalidade;
-                            @endphp
-                        @endif
-
-                        <tr>
-                            <td>{{ $loop->index + 1 }}</td>
-                            <td>{{ $pergunta->descricao }}</td>
-                            <td>
-                                <label>
-                                    <input type="radio" name="perguntas[{{ $pergunta->id }}]" value="Sim"> Sim
-                                </label>
-                                <label>
-                                    <input type="radio" name="perguntas[{{ $pergunta->id }}]" value="Nao"> Não
-                                </label>
-                            </td>
-                            <td>
-                                <input type="text" class="form-control" id="descricao" name="perguntas_descricao[{{ $pergunta->id }}]" placeholder="Comentário">
-                            </td>
                         </tr>
+                        @php
+                            $finalidadeAtual = $pergunta->finalidade;
+                        @endphp
+                    @endif
+
+                    <tr>
+                        <td>{{ $loop->index + 1 }}</td>
+                        <td>{{ $pergunta->descricao }}</td>
+                        <td>
+                            <label>
+                                <input type="radio" name="perguntas[{{ $pergunta->id }}]" value="Sim" required> Sim
+                            </label>
+                            <label>
+                                <input type="radio" name="perguntas[{{ $pergunta->id }}]" value="Nao" required> Não
+                            </label>
+                        </td>
+                        <td>
+                            @if ($pergunta->prioridade == 'alta')
+                                <input type="text" class="form-control descricao-input" id="descricao" name="perguntas_descricao[{{ $pergunta->id }}]" placeholder="Comentário" required>
+                            @else
+                                <input type="text" class="form-control descricao-input" id="descricao" name="perguntas_descricao[{{ $pergunta->id }}]" placeholder="Comentário">
+                            @endif
+                        </td>
+                    </tr>
                     @endforeach
+
                 </table>
                 </div>
             </div>
@@ -127,6 +129,5 @@
 
 @section('js')
     <script> console.log('Hi!'); </script>
-   
 
 @stop
