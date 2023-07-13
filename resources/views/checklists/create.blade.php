@@ -103,11 +103,14 @@
                         </td>
                         <td>
                             @if ($pergunta->prioridade == 'alta')
-                                <input type="text" class="form-control descricao-input" id="descricao" name="perguntas_descricao[{{ $pergunta->id }}]" placeholder="Comentário" required>
+                              <div style="position: relative;">
+                                <input type="text" class="form-control descricao-input required" id="descricao" name="perguntas_descricao[{{ $pergunta->id }}]" placeholder="Comentário" required>
+                                <span style="position: absolute; top: 0; right: -10px; color: red;">*</span>
+                              </div>
                             @else
-                                <input type="text" class="form-control descricao-input" id="descricao" name="perguntas_descricao[{{ $pergunta->id }}]" placeholder="Comentário">
+                              <input type="text" class="form-control descricao-input" id="descricao" name="perguntas_descricao[{{ $pergunta->id }}]" placeholder="Comentário">
                             @endif
-                        </td>
+                          </td>
                     </tr>
                     @endforeach
 
@@ -124,7 +127,21 @@
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+    <link rel="stylesheet" href="/css/admin_custom.css">4
+
+    <style>
+        .required {
+            position: relative;
+        }
+
+        .required::after {
+            content: "*";
+            position: absolute;
+            top: 0;
+            right: -10px;
+            color: red;
+        }
+      </style>
 @stop
 
 @section('js')
