@@ -13,14 +13,8 @@
 @stop
 
 @section('content')
-<div class="d-flex flex-row-reverse align-items-end mb-3">
-  <a href="{{ url('preenchimento') }}"  class="btn btn-primary">
-    <i class="fas fa-plus"></i> Adicionar
-  </a>
-</div>
+
 <div class="card">
-
-
           <!-- /.card-header -->
 <div class="card-body p-0">
     <table class="table table-striped">
