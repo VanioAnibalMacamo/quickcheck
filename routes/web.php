@@ -30,7 +30,7 @@ Route::get('/home', function () {
     $numMaquinas = Maquina::count(); // Contagem de máquinas
     $numAtividades = Actividade::count(); // Contagem de atividades
     $numFuncionarios = Funcionario::count(); // Contagem de funcionários
-    
+
     return view('home', compact('numChecklists', 'numMaquinas', 'numAtividades', 'numFuncionarios'));
 })->middleware(['auth'])->name('home');
 
@@ -39,13 +39,13 @@ Route::get('/dashboard', function () {
     $numMaquinas = Maquina::count(); // Contagem de máquinas
     $numAtividades = Actividade::count(); // Contagem de atividades
     $numFuncionarios = Funcionario::count(); // Contagem de funcionários
-    
+
     return view('dashboard', compact('numChecklists', 'numMaquinas', 'numAtividades', 'numFuncionarios'));
 })->middleware(['auth'])->name('dashboard');
 
 
 Route::get('/userIndex',function(){
-    $users = User::all(); 
+    $users = User::all();
     return view('users.index',compact('users'));
 })->middleware(['auth'])->name('userIndex');
 
@@ -132,3 +132,7 @@ Route::get('/update_preenchimento_checklist/{id}',[App\Http\Controllers\CheckLis
 Route::get('/actualizar_checklist/{id}',[App\Http\Controllers\CheckListController::class,'actualizar_view']);
 Route::any('/updateChecklist/{id}',[App\Http\Controllers\CheckListController::class,'update']);
 Route::delete('/checklist/{id}', 'App\Http\Controllers\CheckListController@delete')->name('checklists.delete');
+
+
+
+Route::get('/relatorioIndex', [App\Http\Controllers\RelatorioController::class, 'index'])->name('relatorioIndex');

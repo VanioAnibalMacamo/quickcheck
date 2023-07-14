@@ -11,14 +11,15 @@ class Resposta extends Model
 
     protected $fillable = ['nome', 'descricao'];
 
+    protected $foreignKey = 'checklist_id'; // Adicionando a chave estrangeira
+
     public function checklist()
     {
-        return $this->belongsTo(CheckList::class);
+        return $this->belongsTo(CheckList::class, 'checklist_id'); // Especificando a coluna da chave estrangeira
     }
 
     public function pergunta()
     {
         return $this->belongsTo(Pergunta::class);
     }
-
 }
