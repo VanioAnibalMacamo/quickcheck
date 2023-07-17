@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>CheckList</h1>   
+    <h1>CheckList</h1>
 @stop
 
 @section('content')
@@ -90,7 +90,7 @@
 
         <div class="card-footer text-center">
             <a href="{{ url('/checkListIndex') }}" type="button" class="btn btn-warning">Voltar</a>
-            <a href="{{ url('/checkListIndex') }}" type="button" class="btn btn-warning">Download</a>
+            <a href="{{ route('download.pdf', ['id' => $checklist->id]) }}" type="button" class="btn btn-success">Download</a>
         </div>
     </form>
 </div>

@@ -133,6 +133,7 @@ Route::get('/actualizar_checklist/{id}',[App\Http\Controllers\CheckListControlle
 Route::any('/updateChecklist/{id}',[App\Http\Controllers\CheckListController::class,'update']);
 Route::delete('/checklist/{id}', 'App\Http\Controllers\CheckListController@delete')->name('checklists.delete');
 
-
-
 Route::get('/relatorioIndex', [App\Http\Controllers\RelatorioController::class, 'index'])->name('relatorioIndex');
+
+Route::get('/download-pdf/{id}',[App\Http\Controllers\DownloadPDFController::class, 'downloadPDF'])->name('download.pdf');
+
