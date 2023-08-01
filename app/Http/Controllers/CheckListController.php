@@ -186,15 +186,15 @@ class CheckListController extends Controller
         $checklist->actividade_id = $request->input('actividade');
         $checklist->maquina_id = $request->input('maquina');
 
-        $verificador = false;
+        $verificador = true;
         foreach ($request->input('perguntas') as $pergunta_id => $resposta) {
             $respostaChecklist = new Resposta();
             $respostaChecklist->nome = $resposta;
 
             $pergunta = Pergunta::find($pergunta_id);
 
-            if(($pergunta->resposta_optima === strtolower($resposta)) && ($pergunta->prioridade === 'alta')){
-                $verificador = true;
+            if(($pergunta->resposta_optima !== strtolower($resposta)) && ($pergunta->prioridade === 'alta')){
+                $verificador = false;
                 break;
             }
         }
