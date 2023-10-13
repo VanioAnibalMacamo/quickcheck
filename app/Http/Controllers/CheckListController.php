@@ -264,7 +264,7 @@ class CheckListController extends Controller
 
         $checklist->delete();
 
-        $respostas = Resposta::where('checklist_id', $checklist->id)->get();
+       // $respostas = Resposta::where('checklist_id', $checklist->id)->get();
 
         return redirect()->route('checklists.index')->with('successDelete', 'Checklist Excluido com Sucesso!');
     }
